@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 py-4 bg-green-800 border-b border-green-700 shadow-md">
+      <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 py-4 bg-green-800 border-b border-green-700 shadow-md">
         {/* LOGO / BRAND */}
         <div className="flex items-center gap-2">
           <a
@@ -30,16 +30,28 @@ const Navbar = () => {
 
         {/* NAV LINKS */}
         <div className="hidden md:flex items-center gap-6 font-medium text-white">
-          <Link href="/" className="flex items-center gap-1 hover:text-green-200 transition-colors">
+          <Link
+            href="/"
+            className="flex items-center gap-1 hover:text-green-200 transition-colors"
+          >
             <HomeIcon className="w-4 h-4" /> Home
           </Link>
-          <Link href="/shop" className="flex items-center gap-1 hover:text-green-200 transition-colors">
+          <Link
+            href="/shop"
+            className="flex items-center gap-1 hover:text-green-200 transition-colors"
+          >
             <ShoppingBag className="w-4 h-4" /> Shop
           </Link>
-          <Link href="/about" className="flex items-center gap-1 hover:text-green-200 transition-colors">
+          <Link
+            href="/about"
+            className="flex items-center gap-1 hover:text-green-200 transition-colors"
+          >
             <Info className="w-4 h-4" /> About Us
           </Link>
-          <Link href="/contact" className="flex items-center gap-1 hover:text-green-200 transition-colors">
+          <Link
+            href="/contact"
+            className="flex items-center gap-1 hover:text-green-200 transition-colors"
+          >
             <Phone className="w-4 h-4" /> Contact
           </Link>
 
@@ -90,8 +102,8 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Spacer to prevent content hiding behind fixed navbar */}
-      <div className="h-20"></div>
+      {/* Optional: Space below navbar */}
+      <div className="mt-6 md:mt-8"></div>
     </>
   );
 };
