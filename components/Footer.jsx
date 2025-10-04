@@ -1,54 +1,56 @@
 import React from "react";
-import { assets } from "@/assets/assets";
-import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="flex flex-col md:flex-row items-start justify-center px-6 md:px-16 lg:px-32 gap-10 py-14 border-b border-gray-500/30 text-gray-500">
-        <div className="w-4/5">
-          <Image className="w-28 md:w-32" src={assets.logo} alt="logo" />
-          <p className="mt-6 text-sm">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+    <footer className="bg-green-800 text-white">
+      <div className="flex flex-col md:flex-row items-start justify-between px-6 md:px-16 lg:px-32 gap-10 py-14 border-b border-green-700">
+        {/* Brand Name & Description */}
+        <div className="w-full md:w-1/3">
+          <h1 className="text-3xl md:text-4xl font-bold text-white">
+            KashtkaarAgroBioCare
+          </h1>
+          <p className="mt-6 text-sm text-green-100">
+            We provide high-quality fertilizers to ensure your crops grow healthy
+            and abundant. Our products help farmers achieve maximum yield with
+            sustainable practices.
           </p>
         </div>
 
-        <div className="w-1/2 flex items-center justify-start md:justify-center">
-          <div>
-            <h2 className="font-medium text-gray-900 mb-5">Company</h2>
-            <ul className="text-sm space-y-2">
-              <li>
-                <a className="hover:underline transition" href="#">Home</a>
-              </li>
-              <li>
-                <a className="hover:underline transition" href="#">About us</a>
-              </li>
-              <li>
-                <a className="hover:underline transition" href="#">Contact us</a>
-              </li>
-              <li>
-                <a className="hover:underline transition" href="#">Privacy policy</a>
-              </li>
-            </ul>
-          </div>
+        {/* Company Links */}
+        <div className="w-full md:w-1/4">
+          <h2 className="font-semibold text-lg mb-5">Company</h2>
+          <ul className="space-y-2 text-green-100 text-sm">
+            <li>
+              <a className="hover:text-white transition-colors" href="#">Home</a>
+            </li>
+            <li>
+              <a className="hover:text-white transition-colors" href="#">About Us</a>
+            </li>
+            <li>
+              <a className="hover:text-white transition-colors" href="#">Contact Us</a>
+            </li>
+            <li>
+              <a className="hover:text-white transition-colors" href="#">Privacy Policy</a>
+            </li>
+          </ul>
         </div>
 
-        <div className="w-1/2 flex items-start justify-start md:justify-center">
-          <div>
-            <h2 className="font-medium text-gray-900 mb-5">Get in touch</h2>
-            <div className="text-sm space-y-2">
-              <p>+1-234-567-890</p>
-              <p>contact@greatstack.dev</p>
-            </div>
-          </div>
+        {/* Contact Info */}
+        <div className="w-full md:w-1/4">
+          <h2 className="font-semibold text-lg mb-5">Get in Touch</h2>
+          <div className="text-green-100 text-sm space-y-2">
+            <p>📞 6263895372 , 9131654462</p>
+            <p>✉️ kashtkaaragrobiocare@gmail.com</p>
+            <p>🏢 32 Shivani Home,Bypass Road ,  </p>
+             <p>&nbsp; &nbsp; &nbsp; &nbsp;Karond Bhopal - 462038 (M.P) </p>
+          </div> 
         </div>
       </div>
-      <p className="py-4 text-center text-xs md:text-sm">
-        Copyright 2025 © GreatStack.dev All Right Reserved.
-      </p>
+
+      {/* Footer Bottom */}
+      <div className="py-4 text-center text-green-200 text-xs md:text-sm">
+        © 2025 KashtkaarAgroBioCare. All Rights Reserved.
+      </div>
     </footer>
   );
 };
