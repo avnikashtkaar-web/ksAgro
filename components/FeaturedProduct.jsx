@@ -1,56 +1,98 @@
-import React from "react";
-import { assets } from "@/assets/assets";
-import Image from "next/image";
+"use client";
 
-const products = [
-  {
-    id: 1,
-    image: assets.girl_with_headphone_image,
-    title: "Unparalleled Sound",
-    description: "Experience crystal-clear audio with premium headphones.",
-  },
-  {
-    id: 2,
-    image: assets.girl_with_earphone_image,
-    title: "Stay Connected",
-    description: "Compact and stylish earphones for every occasion.",
-  },
-  {
-    id: 3,
-    image: assets.boy_with_laptop_image,
-    title: "Power in Every Pixel",
-    description: "Shop the latest laptops for work, gaming, and more.",
-  },
+import React, { useState } from "react";
+import Slider from "react-slick";
+import Image from "next/image";
+import { assets } from "@/assets/assets";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const kohinoorImages = [
+  { src: assets.kohinoor, title: "Kohinoor Powder 1", description: "Essential nutrients for healthier plants." },
+  { src: assets.kohinoor1, title: "Kohinoor Powder 2", description: "Boosts growth and productivity." },
+  { src: assets.kohinoor2, title: "Kohinoor Powder 3", description: "Perfect for all soil types." },
+  { src: assets.kohinoor, title: "Kohinoor Powder 4", description: "Enhances plant immunity." },
+  { src: assets.kohinoor1, title: "Kohinoor Powder 5", description: "Rich in micronutrients." },
+  { src: assets.kohinoor2, title: "Kohinoor Powder 6", description: "Improves yield and quality." },
 ];
 
 const FeaturedProduct = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: true,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
+    ],
+  };
+
   return (
-    <div className="mt-14">
+    <div className="mt-14 max-w-[1200px] mx-auto px-4 py-10 bg-green-100 rounded-2xl shadow-lg">
       <div className="flex flex-col items-center">
-        <p className="text-3xl font-medium">Featured Products</p>
-        <div className="w-28 h-0.5 bg-orange-600 mt-2"></div>
+        <p className="text-3xl font-bold text-green-900">Featured Products</p>
+        <div className="w-28 h-1 bg-green-600 mt-2 rounded-full"></div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-14 mt-12 md:px-14 px-4">
-        {products.map(({ id, image, title, description }) => (
-          <div key={id} className="relative group">
+      <div className="mt-12">
+        <Slider {...settings}>
+          {kohinoorImages.map(({ src, title, description }, index) => (
+            <div key={index} className="px-3">
+              <div
+                className="relative rounded-xl overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition duration-300"
+                onClick={() => setSelectedImage({ src, title, description })}
+              >
+                <Image
+                  src={src}
+                  alt={title}
+                  className="object-cover w-full h-64"
+                  width={400}
+                  height={250}
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-green-800/80 to-transparent p-4 text-white space-y-1">
+                  <p className="font-semibold text-lg">{title}</p>
+                  <p className="text-sm">{description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+      {/* Fullscreen Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-3xl w-full">
             <Image
-              src={image}
-              alt={title}
-              className="group-hover:brightness-75 transition duration-300 w-full h-auto object-cover"
+              src={selectedImage.src}
+              alt={selectedImage.title}
+              className="rounded-xl object-contain w-full h-auto transform hover:scale-105 transition duration-500"
+              width={800}
+              height={600}
             />
-            <div className="group-hover:-translate-y-4 transition duration-300 absolute bottom-8 left-8 text-white space-y-2">
-              <p className="font-medium text-xl lg:text-2xl">{title}</p>
-              <p className="text-sm lg:text-base leading-5 max-w-60">
-                {description}
-              </p>
-              <button className="flex items-center gap-1.5 bg-orange-600 px-4 py-2 rounded">
-                Buy now <Image className="h-3 w-3" src={assets.redirect_icon} alt="Redirect Icon" />
-              </button>
+            <div
+              className="absolute top-4 right-4 text-white text-3xl font-bold cursor-pointer"
+              onClick={() => setSelectedImage(null)}
+            >
+              &times;
+            </div>
+            <div className="text-white mt-4 text-center">
+              <p className="font-bold text-2xl">{selectedImage.title}</p>
+              <p className="text-sm">{selectedImage.description}</p>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
