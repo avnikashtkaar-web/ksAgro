@@ -150,7 +150,7 @@ const About = () => {
     { src: "/images/kohinoor.jpg", heading: "Innovation & Excellence", subtitle: "Quality products for modern agriculture." },
     { src: "/images/kohinoor.jpg", heading: "Your Farming Partner", subtitle: "Together towards a greener future." },
   ];
-
+// base branch
   const sliderSettings = {
     dots: true,
     infinite: true,
