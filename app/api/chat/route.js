@@ -1,56 +1,59 @@
 import { NextResponse } from "next/server";
-
-// Toggle between Free mode and OpenAI mode
-const USE_OPENAI = false; // 🔹 Set to true to use OpenAI
+import chatbotData from "@/data/chatbotData.json";
 
 export async function POST(req) {
   try {
-    const { messages } = await req.json();
+    const { messages = [], language = "en" } = await req.json();
 
-    if (!USE_OPENAI) {
-      // ✅ Free testing (mock responses)
-      const lastMessage = messages[messages.length - 1]?.content || "";
+    if (!messages.length) {
+      return NextResponse.json({
+        text: language === "en"
+          ? "🤔 Please type something!"
+          : "🤔 कृपया कुछ टाइप करें!"
+      });
+    }
 
-      let botResponse = "Sorry, I don't understand.";
-      if (lastMessage.toLowerCase().includes("hello")) {
-        botResponse = "Hello! How can I help you today?";
-      } else if (lastMessage.toLowerCase().includes("fertilizer")) {
-        botResponse = "We recommend using organic fertilizer for better crop yield.";
-      } else if (lastMessage.trim() === "") {
-        botResponse = "Please type something!";
-      } else {
-        botResponse = "This is a mock response from your bot.";
+    const lastMessageRaw = messages[messages.length - 1]?.content || "";
+    const lastMessage = lastMessageRaw.trim().toLowerCase();
+
+    // Default response
+    let botResponse = language === "en"
+      ? "🤔 I don’t understand, can you ask in another way?"
+      : "🤔 मुझे समझ नहीं आया, कृपया फिर से पूछें।";
+
+    // 1️⃣ Exact key match
+    for (const key in chatbotData) {
+      const entry = chatbotData[key];
+      if (lastMessage.includes(key.toLowerCase())) {
+        botResponse = language === "en" ? entry.answer.en : entry.answer.hi;
+        break;
       }
-
-      return NextResponse.json({ text: botResponse });
     }
 
-    // 🔹 OpenAI Mode
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages,
-        temperature: 0.7,
-      }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      console.error("OpenAI API error:", data);
-      return NextResponse.json({ text: "Sorry, something went wrong!" });
+    // 2️⃣ Keyword match if still not matched
+    if (botResponse.includes("🤔")) {
+      for (const key in chatbotData) {
+        const entry = chatbotData[key];
+        if (Array.isArray(entry.keywords)) {
+          for (const kw of entry.keywords) {
+            if (lastMessage.includes(kw.toLowerCase())) {
+              botResponse = language === "en" ? entry.answer.en : entry.answer.hi;
+              break;
+            }
+          }
+        }
+        if (!botResponse.includes("🤔")) break;
+      }
     }
 
-    const text = data.choices?.[0]?.message?.content || "Sorry, something went wrong!";
-    return NextResponse.json({ text });
+    return NextResponse.json({ text: botResponse });
 
   } catch (error) {
     console.error("Server/API error:", error);
-    return NextResponse.json({ text: "Sorry, something went wrong!" });
+    return NextResponse.json({
+      text: language === "en"
+        ? "⚠️ Server error, please try again later."
+        : "⚠️ सर्वर त्रुटि, कृपया बाद में पुनः प्रयास करें।"
+    });
   }
 }
