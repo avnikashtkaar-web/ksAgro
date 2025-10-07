@@ -8,7 +8,6 @@ import FeaturedProduct from "@/components/FeaturedProduct";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import QrCode from "@/components/QrCode"; // Import QR code component
-<<<<<<< HEAD
 import Chatbot from "@/components/Chatbot";
 const Home = () => {
   return (
@@ -27,10 +26,7 @@ const Home = () => {
         </div>
       </div>
       {/* <Footer /> */}
-<<<<<<< HEAD
         <Chatbot />
-=======
->>>>>>> 61ac7758d16b7b81e26e0f7c368119bf95a1756c
     </>
   );
 };
