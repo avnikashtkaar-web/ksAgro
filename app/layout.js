@@ -1,6 +1,6 @@
 // import { Outfit } from "next/font/google";
 // import "./globals.css";
-// import { AppContextProvider } from "@/context/AppContext";
+//hkjhkjhkj// import { AppContextProvider } from "@/context/AppContext";
 // import { Toaster } from "react-hot-toast";
 // // Import slick slider CSS
 // import "slick-carousel/slick/slick.css";
