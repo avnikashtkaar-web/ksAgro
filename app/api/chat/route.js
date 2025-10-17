@@ -19,7 +19,7 @@ export async function POST(req) {
     // Default response
     let botResponse = language === "en"
       ? "🤔 I don’t understand, can you ask in another way?"
-      : "🤔 मुझे समझ नहीं आया, कृपया फिर से पूछें।";
+      : "🤔 कृपया अपनी कृषि या उत्पाद से संबंधित प्रश्न पूछें। अधिक जानकारी के लिए आप +91-9993-338-240 पर संपर्क कर सकते हैं।";
 
     // 1️⃣ Exact key match
     for (const key in chatbotData) {

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaSeedling,
-  FaCloudSun,
+  FaPaperPlane,
   FaLeaf,
   FaWater,
   FaMicrophone,
@@ -12,21 +12,17 @@ import {
 } from "react-icons/fa";
 
 export default function Chatbot() {
-  const [open, setOpen] = useState(false); // start closed
+  const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [typingText, setTypingText] = useState("");
-  const [language, setLanguage] = useState("en"); // default English
+  const [language, setLanguage] = useState("en");
   const chatEndRef = useRef(null);
-  const notificationSound = useRef(null);
   const recognitionRef = useRef(null);
 
+  // --- Voice recognition setup ---
   useEffect(() => {
-    // notificationSound.current = new Audio(
-    //   "/425556__t_roy_920__rock-808-beat.mp3"
-    // );
-
     if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
       const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -47,7 +43,20 @@ export default function Chatbot() {
 
   const scrollToBottom = () =>
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+
   useEffect(() => scrollToBottom(), [messages, typingText]);
+
+  // --- Reset chat & show greeting every time window opens ---
+  useEffect(() => {
+    if (open) {
+      const greeting =
+        language === "hi"
+          ? "🙏🏻 नमस्ते! मैं Khashtkaar Agro Bio Care A.I. असिस्टेंट हूँ। आज मैं आपकी क्या मदद कर सकता हूँ?"
+          : "🙏🏻 Namaste! I am Khashtkaar Agro Bio Care A.I. Assistant. How can I help you today?";
+      setMessages([{ role: "bot", content: greeting }]);
+      speak(greeting);
+    }
+  }, [open, language]);
 
   const speak = (text) => {
     if ("speechSynthesis" in window) {
@@ -59,19 +68,18 @@ export default function Chatbot() {
 
   const addBotMessage = (botReply) => {
     setMessages((prev) => [...prev, { role: "bot", content: botReply }]);
-    notificationSound.current?.play();
     speak(botReply);
   };
 
   const handleVoiceInput = () => {
     if (!recognitionRef.current)
-      return alert("Speech Recognition not supported.");
+      return alert("Speech Recognition not supported in this browser.");
     recognitionRef.current.start();
   };
 
   const sendMessage = async (voiceInput) => {
     const userText = voiceInput || input;
-    if (!userText) return;
+    if (!userText.trim()) return;
 
     const userMessage = { role: "user", content: userText };
     setMessages((prev) => [...prev, userMessage]);
@@ -113,7 +121,6 @@ export default function Chatbot() {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {/* Chat window */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -121,41 +128,36 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
             transition={{ duration: 0.3 }}
-            className="w-80 sm:w-96 h-[500px] flex flex-col border-2 border-green-400 rounded-2xl shadow-2xl bg-gradient-to-br from-green-50 to-green-100 overflow-hidden"
+            className="w-80 sm:w-96 h-[500px] flex flex-col border border-green-400 rounded-2xl shadow-2xl bg-[#E5DDD5] overflow-hidden"
           >
-            {/* Header with title + language + close */}
-            <div className="flex justify-between items-center bg-green-500 text-white px-4 py-3">
-              <h3 className="font-bold flex items-center gap-2">
-                <FaSeedling /> Kashtkaar Chatbot
-              </h3>
+            {/* Header */}
+            <div className="flex justify-between items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-4 py-3">
+              <div className="flex items-center gap-2 text-sm sm:text-base font-bold">
+                <FaSeedling />
+                <span>Khashtkaar Chatbot</span>
+              </div>
               <div className="flex items-center gap-2">
-                {/* Language buttons */}
                 <button
                   onClick={() => setLanguage("en")}
-                  className={`px-3 py-1 rounded ${
-                    language === "en"
-                      ? "bg-white text-green-600"
-                      : "bg-green-400"
+                  className={`px-2 py-1 text-xs rounded ${
+                    language === "en" ? "bg-white text-green-600" : ""
                   }`}
                 >
                   EN
                 </button>
                 <button
                   onClick={() => setLanguage("hi")}
-                  className={`px-3 py-1 rounded ${
-                    language === "hi"
-                      ? "bg-white text-green-600"
-                      : "bg-green-400"
+                  className={`px-2 py-1 text-xs rounded ${
+                    language === "hi" ? "bg-white text-green-600" : ""
                   }`}
                 >
                   HI
                 </button>
-                {/* Close button */}
                 <button
                   onClick={() => setOpen(false)}
-                  className="text-white hover:text-red-300 ml-2"
+                  className="hover:text-red-300"
                 >
-                  <FaTimes size={18} />
+                  <FaTimes size={16} />
                 </button>
               </div>
             </div>
@@ -163,25 +165,28 @@ export default function Chatbot() {
             {/* Messages */}
             <div className="flex-1 p-3 overflow-y-auto space-y-2">
               {messages.map((msg, i) => (
-                <div
+                <motion.div
                   key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
                   className={`flex ${
                     msg.role === "user" ? "justify-end" : "justify-start"
                   }`}
                 >
                   <span
-                    className={`px-3 py-2 rounded-xl shadow ${
+                    className={`px-3 py-2 rounded-2xl shadow text-sm ${
                       msg.role === "user"
-                        ? "bg-green-200 text-green-900"
-                        : "bg-white text-gray-900 border border-green-200"
+                        ? "bg-[#DCF8C6] text-gray-900 rounded-br-none"
+                        : "bg-white text-gray-900 rounded-bl-none"
                     } max-w-[75%] break-words`}
                   >
                     {msg.content}
                   </span>
-                </div>
+                </motion.div>
               ))}
               {typingText && (
-                <p className="text-gray-700 bg-white border border-green-200 px-3 py-2 rounded-xl inline-block">
+                <p className="text-gray-700 bg-white border border-green-100 px-3 py-2 rounded-xl inline-block">
                   {typingText}
                   <span className="animate-pulse">|</span>
                 </p>
@@ -196,42 +201,48 @@ export default function Chatbot() {
             </div>
 
             {/* Input */}
-            <div className="flex p-3 border-t bg-white gap-2">
+            <div className="flex items-center p-3 border-t bg-[#F0F0F0] gap-2">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={
                   language === "en"
-                    ? "Ask about farming..."
-                    : "खेती के बारे में पूछें..."
+                    ? "Type your message..."
+                    : "अपना संदेश टाइप करें..."
                 }
-                className="flex-1 border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-green-500"
+                className="flex-1 border border-gray-300 rounded-full px-4 py-2 outline-none focus:ring-2 focus:ring-green-500"
                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               />
+
               <motion.button
                 onClick={() => sendMessage()}
-                className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1"
+                className="bg-green-500 text-white p-3 rounded-full shadow-md flex items-center justify-center"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <FaCloudSun /> Send
+                <FaPaperPlane size={18} />
               </motion.button>
+
               <motion.button
                 onClick={handleVoiceInput}
-                className="bg-yellow-400 text-white px-3 py-2 rounded-lg flex items-center gap-1"
+                className="bg-yellow-400 text-white p-3 rounded-full shadow-md flex items-center justify-center"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <FaMicrophone /> Speak
+                <FaMicrophone size={18} />
               </motion.button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Floating Chat Icon (only water drop now) */}
+      {/* Floating Button */}
       <motion.button
         onClick={() => setOpen(!open)}
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.1, boxShadow: "0 0 20px #34D399" }}
-        className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-2xl transition-transform"
+        className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-2xl"
       >
         <FaWater size={28} />
       </motion.button>

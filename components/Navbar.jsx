@@ -1,15 +1,12 @@
-
-
-
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { assets } from "@/assets/assets";
 import Link from "next/link";
-import { useAppContext } from "@/context/AppContext";
 import Image from "next/image";
 import { Leaf, ShoppingBag, Phone, Info, HomeIcon } from "lucide-react";
 import { FaVolumeUp, FaVolumeMute, FaChevronDown } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAppContext } from "@/context/AppContext";
 
 const Navbar = () => {
   const { isSeller, router } = useAppContext();
@@ -73,21 +70,21 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const navLinkClass =
-    "relative flex items-center gap-1 hover:text-green-200 transition-all duration-300 whitespace-nowrap " +
-    "after:content-[''] after:absolute after:w-0 after:h-[3px] after:left-0 after:-bottom-1 " +
-    "after:bg-gradient-to-r after:from-pink-500 after:via-yellow-400 after:to-green-400 " +
-    "hover:after:w-full after:transition-all after:duration-500 rounded " +
-    "hover:after:animate-gradient-move";
+  // Tailwind gradient underline class
+ const navLinkClass =
+  "relative flex items-center gap-1 text-white no-underline transition-all duration-300 whitespace-nowrap " +
+  "after:content-[''] after:absolute after:w-0 after:h-[3px] after:left-0 after:-bottom-1 " +
+  "after:bg-gradient-to-r after:from-pink-500 after:via-yellow-400 after:to-green-400 " +
+  "hover:after:w-full after:transition-all after:duration-500 rounded " +
+  "hover:after:animate-gradient-move";
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-green-800 shadow-md border-b border-green-700">
+      <nav className={`fixed top-0 left-0 w-full z-50 bg-green-800 shadow-md border-b border-green-700`}>
         <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 md:px-16 py-3">
-
-          {/* LEFT: Speaker + Logo */}
+          
+          {/* LEFT: Logo + Audio */}
           <div className="flex items-center gap-4">
-            {/* Speaker Dropdown */}
             <div className="relative flex flex-col items-center" ref={dropdownRef}>
               <motion.button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
@@ -128,31 +125,25 @@ const Navbar = () => {
             </div>
 
             {/* Logo */}
-            <a
-              href="/Kisan Agro book.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 relative group"
-            >
-              <Leaf
-                className={`text-white hover:text-green-200 transition-colors ${scrolled ? "w-6 h-6" : "w-8 h-8"}`}
-              />
-              <motion.span
-                animate={{ fontSize: scrolled ? "1.25rem" : "1.75rem" }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="font-extrabold text-white tracking-wide hover:text-green-200 whitespace-nowrap relative"
-              >
-                KashtkaarAgroBioCare
-                {/* Tooltip below */}
-                <span className="absolute top-full mt-1 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                  Click here
-                </span>
-              </motion.span>
-            </a>
+ <Link
+  href="/Kisan Agro book.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 no-underline"
+>
+  <Leaf className={`text-white ${scrolled ? "w-6 h-6" : "w-8 h-8"}`} />
+  <motion.span
+  animate={{ fontSize: scrolled ? "1.25rem" : "1.75rem" }}
+  transition={{ duration: 0.3, ease: "easeInOut" }}
+  className="relative font-extrabold text-white tracking-wide cursor-pointer no-underline after:content-[''] after:absolute after:w-0 after:h-[3px] after:left-0 after:-bottom-1 after:bg-gradient-to-r after:from-pink-500 after:via-yellow-400 after:to-green-400 hover:after:w-full after:transition-all after:duration-500 hover:after:animate-gradient-move"
+>
+  KashtkaarAgroBioCare
+</motion.span>
+</Link>
           </div>
 
           {/* MIDDLE: Nav Links */}
-          <div className="hidden md:flex items-center gap-10 font-medium text-white ml-6 mr-6">
+          <div className="hidden md:flex items-center gap-10 font-medium">
             <Link href="/" className={navLinkClass}>
               <HomeIcon className="w-4 h-4" /> Home
             </Link>
@@ -172,7 +163,7 @@ const Navbar = () => {
             {isSeller && (
               <motion.button
                 onClick={() => router.push("/admindashboard")}
-                className="text-sm bg-green-600 text-white px-4 py-2 rounded-full shadow whitespace-nowrap flex-shrink-0"
+                className="text-sm bg-green-600 text-white px-4 py-2 rounded-full shadow"
                 animate={{ scale: scrolled ? 0.95 : 1 }}
                 transition={{ duration: 0.3 }}
                 whileHover={{ scale: 1.05 }}
@@ -182,7 +173,7 @@ const Navbar = () => {
             )}
 
             <motion.div
-              className="flex items-center justify-center p-2 bg-green-600 text-white rounded-full shadow flex-shrink-0"
+              className="flex items-center justify-center p-2 bg-green-600 text-white rounded-full shadow"
               animate={{ scale: scrolled ? 0.95 : 1 }}
               transition={{ duration: 0.3 }}
             >
@@ -190,9 +181,11 @@ const Navbar = () => {
             </motion.div>
 
             <motion.div
-              className="flex items-center gap-2 px-4 py-2 min-w-[120px] bg-green-600 text-white rounded-full shadow whitespace-nowrap flex-shrink-0"
+              onClick={() => router.push("/account")}
+              className="flex items-center gap-2 px-4 py-2 min-w-[120px] bg-green-600 text-white rounded-full shadow cursor-pointer hover:bg-green-700 transition"
               animate={{ scale: scrolled ? 0.95 : 1 }}
               transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.05 }}
             >
               <Image src={assets.user_icon} alt="user" width={24} height={24} />
               Account
