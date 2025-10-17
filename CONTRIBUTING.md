@@ -36,7 +36,7 @@ We welcome contributions from everyone whether it's fixing a bug, adding a new f
 
 ---
 
-## Ideas for Contribution
+
 
 You can:
 - Create new pages
