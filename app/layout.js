@@ -1,6 +1,6 @@
 // import { Outfit } from "next/font/google";
 // import "./globals.css";
-// import { AppContextProvider } from "@/context/AppContext";
+//hkjhkjhkj// import { AppContextProvider } from "@/context/AppContext";
 // import { Toaster } from "react-hot-toast";
 // // Import slick slider CSS
 // import "slick-carousel/slick/slick.css";
@@ -32,7 +32,7 @@ import { Toaster } from "react-hot-toast";
 // Import slick slider CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 // Import Navbar & Footer
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
