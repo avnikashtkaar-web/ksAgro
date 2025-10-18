@@ -80,51 +80,6 @@ const Navbar = () => {
 
   return (
     <>
-<<<<<<< HEAD
-      <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 py-4 bg-green-800 border-b border-green-700 shadow-md">
-        {/* LOGO / BRAND */}
-        <div className="flex items-center gap-2">
-          <a
-            href="/Kisan Agro book.pdf" // PDF inside public folder
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Click here"
-            className="flex items-center gap-2"
-          >
-            <Leaf className="w-8 h-8 text-white hover:text-green-200 transition-colors" />
-            <span className="text-2xl md:text-3xl font-extrabold text-white tracking-wide hover:text-green-200 transition-colors">
-              KashtkaarAgroBioCare
-            </span>
-          </a>
-        </div>
-
-        {/* NAV LINKS */}
-        <div className="hidden md:flex items-center gap-6 font-medium text-white">
-          <Link
-            href="/"
-            className="flex items-center gap-1 hover:text-green-200 transition-colors"
-          >
-            <HomeIcon className="w-4 h-4" /> Home
-          </Link>
-          <Link
-            href="/shop"
-            className="flex items-center gap-1 hover:text-green-200 transition-colors"
-          >
-            <ShoppingBag className="w-4 h-4" /> Shop
-          </Link>
-          <Link
-            href="/about"
-            className="flex items-center gap-1 hover:text-green-200 transition-colors"
-          >
-            <Info className="w-4 h-4" /> About Us
-          </Link>
-          <Link
-            href="/contact"
-            className="flex items-center gap-1 hover:text-green-200 transition-colors"
-          >
-            <Phone className="w-4 h-4" /> Contact
-          </Link>
-=======
       <nav className={`fixed top-0 left-0 w-full z-50 bg-green-800 shadow-md border-b border-green-700`}>
         <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 md:px-16 py-3">
           
@@ -168,7 +123,6 @@ const Navbar = () => {
                 )}
               </AnimatePresence>
             </div>
->>>>>>> faaebc0c1f116b97a3da387416443f366735bdad
 
             {/* Logo */}
  <Link
@@ -240,10 +194,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-<<<<<<< HEAD
-      {/* Optional: Space below navbar */}
-      <div className="mt-6 md:mt-8"></div>
-=======
       <audio ref={audioRef} src={audioFiles[language]} />
       <div className="h-20"></div>
 
@@ -257,7 +207,6 @@ const Navbar = () => {
           animation: gradientMove 2s linear infinite;
         }
       `}</style>
->>>>>>> faaebc0c1f116b97a3da387416443f366735bdad
     </>
   );
 };

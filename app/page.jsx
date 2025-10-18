@@ -8,12 +8,8 @@ import FeaturedProduct from "@/components/FeaturedProduct";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import QrCode from "@/components/QrCode"; // Import QR code component
-<<<<<<< HEAD
-
-=======
 import Chatbot from "@/components/Chatbot";
 import "bootstrap/dist/css/bootstrap.min.css";
->>>>>>> faaebc0c1f116b97a3da387416443f366735bdad
 const Home = () => {
   return (
     <>
@@ -31,6 +27,7 @@ const Home = () => {
         </div>
       </div>
       {/* <Footer /> */}
+        <Chatbot />
     </>
   );
 };
