@@ -1,0 +1,73 @@
+
+{
+  "hello": {
+    "answer": {
+      "en": "👋 Hello farmer! How can I help you today?",
+      "hi": "नमस्ते किसान! मैं आज आपकी कैसे मदद कर सकता हूँ?"
+    },
+    "keywords": ["hi", "hey", "greetings", "नमस्ते", "हैलो"]
+  },
+  "water": {
+    "answer": {
+      "en": "💧 Best time to water crops is morning or evening to reduce evaporation.",
+      "hi": "फसलों को पानी देने का सबसे अच्छा समय सुबह या शाम है ताकि वाष्पीकरण कम हो।"
+    },
+    "keywords": ["irrigation", "watering", "moisture", "पानी", "सिंचाई"]
+  },
+  "wheat": {
+    "answer": {
+      "en": "🌾 Wheat grows best in cool weather. Plant between November–December.",
+      "hi": "गेहूँ ठंडे मौसम में सबसे अच्छी तरह उगता है। इसे नवंबर–दिसंबर में बोएं।"
+    },
+    "keywords": ["cereal", "crop", "planting", "गेहूँ", "अनाज"]
+  },
+  "fertilizer": {
+    "answer": {
+      "en": "🌱 Organic compost or cow dung manure works best for soil health.",
+      "hi": "जैविक खाद या गोबर की खाद मिट्टी की सेहत के लिए सबसे अच्छी है।"
+    },
+    "keywords": ["organic", "chemical", "urea", "manure", "compost", "खाद", "उर्वरक"]
+  },
+  "types of fertilizer": {
+    "answer": {
+      "en": "There are several types: organic, inorganic, nitrogen-based, phosphorus-based, potassium-based, and mixed fertilizers.",
+      "hi": "कई प्रकार के उर्वरक हैं: जैविक, अजैविक, नाइट्रोजन आधारित, फॉस्फोरस आधारित, पोटैशियम आधारित और मिश्रित उर्वरक।"
+    },
+    "keywords": ["type", "kinds", "different", "प्रकार", "किस्म"]
+  },
+  "how to apply fertilizer": {
+    "answer": {
+      "en": "Fertilizer can be applied through broadcasting, band placement, foliar spray, or fertigation depending on the crop.",
+      "hi": "उर्वरक को फसल के अनुसार फैलाना, पट्टी में डालना, पत्ती पर छिड़काव या फर्टिगेशन के माध्यम से लगाया जा सकता है।"
+    },
+    "keywords": ["apply", "dosage", "usage", "method", "लगाना", "प्रयोग"]
+  },
+  "best season for fertilizer": {
+    "answer": {
+      "en": "The best season depends on the crop, but generally before sowing or during early growth stages.",
+      "hi": "सबसे अच्छा समय फसल पर निर्भर करता है, लेकिन आम तौर पर बुवाई से पहले या शुरुआती विकास चरण में।"
+    },
+    "keywords": ["season", "time", "period", "मौसम", "समय"]
+  },
+  "organic fertilizer": {
+    "answer": {
+      "en": "Organic fertilizers include compost, manure, bone meal, and green manure. They improve soil health.",
+      "hi": "जैविक उर्वरकों में कंपोस्ट, गोबर, हड्डी का पाउडर और ग्रीन मैन्योर शामिल हैं। ये मिट्टी की सेहत सुधारते हैं।"
+    },
+    "keywords": ["compost", "manure", "green manure", "जैविक", "गोबर"]
+  },
+  "chemical fertilizer": {
+    "answer": {
+      "en": "Chemical fertilizers are synthetic compounds like urea, ammonium nitrate, and superphosphate. Use carefully as they can affect soil over time.",
+      "hi": "रासायनिक उर्वरक सिंथेटिक पदार्थ हैं जैसे यूरिया, अमोनियम नाइट्रेट, और सुपरफॉस्फेट। समय के साथ मिट्टी पर असर पड़ सकता है, सावधानी से प्रयोग करें।"
+    },
+    "keywords": ["synthetic", "urea", "ammonium", "रासायनिक", "उर्वरक"]
+  },
+  "bye": {
+    "answer": {
+      "en": "👋 Goodbye! Wishing you good farming!",
+      "hi": "अलविदा! आपकी खेती अच्छी हो!"
+    },
+    "keywords": ["exit", "see you", "goodbye", "अलविदा", "फिर मिलेंगे"]
+  }
+}

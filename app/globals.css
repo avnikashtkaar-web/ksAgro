@@ -2,18 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scroll */
 * {
     scroll-behavior: smooth;
 }
 
+/* Remove spinner for number inputs */
 @layer base {
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
-  }
+}
 
+/* Hide scrollbar */
 ::-webkit-scrollbar {
   display: none;
+}
+
+/* Navbar link fixes */
+.navbar .nav-link {
+  color: white !important;             /* Always white */
+  text-decoration: none !important;    /* Remove underline */
+  font-weight: 500;                     /* Optional: medium font weight */
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: white !important;             /* Keep white on hover/focus */
+  text-decoration: none !important;    /* No underline */
+}
+
+.navbar .nav-link.active {
+  color: white !important;             /* Active link stays white */
+  text-decoration: none !important;
+  font-weight: 600;                     /* Optional bold for active */
 }
