@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const SideBar = () => {
   const pathname = usePathname();
-  //comment adding
+
   const menuItems = [
     { name: 'Customer Form', path: '/sellerdashboard', icon: assets.add_icon },
     { name: 'Confirm Form', path: '/sellerdashboard/confirmform', icon: assets.product_list_icon },
@@ -26,10 +26,11 @@ const SideBar = () => {
               animate={{ opacity: 1 }}
               whileHover={{ scale: 1.05, backgroundColor: 'rgba(220, 252, 231, 0.6)' }}
               transition={{ type: 'spring', stiffness: 300 }}
-              className={`flex items-center py-3 px-4 gap-3 cursor-pointer transition-colors duration-300 rounded-r-lg ${isActive
+              className={`flex items-center py-3 px-4 gap-3 cursor-pointer transition-colors duration-300 rounded-r-lg ${
+                isActive
                   ? 'border-r-4 md:border-r-[6px] bg-green-200 border-green-500'
                   : ''
-                }`}
+              }`}
             >
               <Image
                 src={item.icon}
