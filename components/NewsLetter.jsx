@@ -8,8 +8,8 @@ const NewsLetter = () => {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState({ visible: false, message: "", type: "success" });
 
-  const phoneNumber = "919752538725"; // WhatsApp number
-  const defaultMsg = "🙏🏻 Namaste! I am Khashtkaar Agro Bio Care Assistant How can I help you today?";
+  const phoneNumber = "919752538725";
+  const defaultMsg = "🙏🏻 Namaste! I am Khashtkaar Agro Bio Care Assistant. How can I help you today?";
 
   const showToast = (message, type = "success") => {
     setToast({ visible: true, message, type });
@@ -17,7 +17,7 @@ const NewsLetter = () => {
   };
 
   const handleSubscribe = async () => {
-    if (!email) {
+    if (!email.trim()) {
       showToast("Please enter a valid email.", "error");
       return;
     }
@@ -46,67 +46,69 @@ const NewsLetter = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center text-center space-y-4 pt-8 pb-14 px-4">
-      <h1 className="md:text-4xl text-2xl font-medium">
+    <div className="flex flex-col items-center justify-center text-center space-y-4 pt-10 pb-16 px-4 sm:px-6 md:px-10 bg-green-50 rounded-2xl shadow-md max-w-[1200px] mx-auto">
+      {/* Heading */}
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800">
         Subscribe now & get 20% off
       </h1>
 
-      {/* Styled two-line description with darker text */}
-      <p className="md:text-base text-gray-700/90 pb-4 text-center">
+      {/* Description */}
+      <p className="text-sm sm:text-base text-gray-700/90 leading-relaxed max-w-2xl">
         Stay updated with the latest farming tips, sustainable practices, and exclusive discounts on our high-quality fertilizers. <br />
-        <span className="font-semibold text-green-700">Subscribe now and boost your crop yield!</span>
+        <span className="font-semibold text-green-700">
+          Subscribe now and boost your crop yield!
+        </span>
       </p>
 
-      {/* Inline Toast Notification */}
+      {/* Toast Notification */}
       {toast.visible && (
         <div
-          className={`px-5 py-3 rounded-lg shadow-lg text-white w-full max-w-md text-center ${
+          className={`flex items-center justify-between gap-3 px-5 py-3 rounded-lg shadow-md text-white w-full max-w-md transition-all duration-300 ${
             toast.type === "success" ? "bg-green-500" : "bg-red-500"
           }`}
         >
-          <div className="flex items-center justify-between gap-4">
-            <span>{toast.message}</span>
-            <button
-              onClick={() => setToast({ visible: false, message: "", type: toast.type })}
-              className="text-white"
-            >
-              <FaTimes />
-            </button>
-          </div>
+          <span className="text-sm sm:text-base">{toast.message}</span>
+          <button
+            onClick={() => setToast({ visible: false, message: "", type: toast.type })}
+            className="text-white hover:opacity-80 transition"
+          >
+            <FaTimes />
+          </button>
         </div>
       )}
 
-      {/* Email input + subscribe button */}
-      <div className="flex items-center justify-between max-w-2xl w-full md:h-14 h-12 mt-2">
+      {/* Email input + button */}
+      <div className="flex flex-col sm:flex-row items-center justify-center w-full max-w-2xl mt-2 gap-3 sm:gap-0">
         <input
-          className="border border-gray-500/30 rounded-md h-full border-r-0 outline-none w-full rounded-r-none px-3 text-gray-700"
+          className="border border-gray-400/40 rounded-md sm:rounded-r-none h-12 w-full px-3 text-gray-700 outline-none focus:ring-2 focus:ring-green-500 transition"
           type="email"
-          placeholder="Enter your email id"
+          placeholder="Enter your email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <button
           onClick={handleSubscribe}
           disabled={loading}
-          className="md:px-12 px-8 h-full text-white bg-orange-600 rounded-md rounded-l-none disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full sm:w-auto px-8 sm:px-12 h-12 text-white bg-orange-600 rounded-md sm:rounded-l-none hover:bg-orange-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? "Submitting..." : "Subscribe"}
         </button>
       </div>
 
-      {/* WhatsApp button appears after successful subscription */}
+      {/* WhatsApp button (after success) */}
       {toast.visible && toast.type === "success" && (
         <a
           href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMsg)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 flex items-center gap-2 text-white bg-green-500 px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+          className="mt-4 flex items-center justify-center gap-2 text-white bg-green-500 px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
         >
-          <FaWhatsapp size={20} /> Chat with us on WhatsApp
+          <FaWhatsapp size={20} />
+          <span className="text-sm sm:text-base font-medium">Chat with us on WhatsApp</span>
         </a>
       )}
     </div>
   );
 };
-//,.....
+
 export default NewsLetter;

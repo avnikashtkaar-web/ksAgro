@@ -21,7 +21,7 @@ export default function Chatbot() {
   const chatEndRef = useRef(null);
   const recognitionRef = useRef(null);
 
-  // --- Voice recognition setup ---
+  // Speech recognition setup
   useEffect(() => {
     if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
       const SpeechRecognition =
@@ -46,7 +46,7 @@ export default function Chatbot() {
 
   useEffect(() => scrollToBottom(), [messages, typingText]);
 
-  // --- Reset chat & show greeting every time window opens ---
+  // Reset chat each time it opens
   useEffect(() => {
     if (open) {
       const greeting =
@@ -120,7 +120,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="fixed bottom-3 right-3 z-50">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -128,7 +128,11 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
             transition={{ duration: 0.3 }}
-            className="w-80 sm:w-96 h-[500px] flex flex-col border border-green-400 rounded-2xl shadow-2xl bg-[#E5DDD5] overflow-hidden"
+            className="fixed sm:static inset-0 sm:inset-auto sm:bottom-3 sm:right-3 
+                       w-screen h-screen sm:w-80 md:w-96 sm:h-[500px]
+                       flex flex-col border sm:border-green-400 border-none
+                       rounded-none sm:rounded-2xl shadow-2xl 
+                       bg-[#E5DDD5] overflow-hidden"
           >
             {/* Header */}
             <div className="flex justify-between items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-4 py-3">
@@ -136,7 +140,7 @@ export default function Chatbot() {
                 <FaSeedling />
                 <span>Khashtkaar Chatbot</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 sm:gap-2">
                 <button
                   onClick={() => setLanguage("en")}
                   className={`px-2 py-1 text-xs rounded ${
@@ -157,7 +161,7 @@ export default function Chatbot() {
                   onClick={() => setOpen(false)}
                   className="hover:text-red-300"
                 >
-                  <FaTimes size={16} />
+                  <FaTimes size={18} />
                 </button>
               </div>
             </div>
@@ -175,11 +179,11 @@ export default function Chatbot() {
                   }`}
                 >
                   <span
-                    className={`px-3 py-2 rounded-2xl shadow text-sm ${
+                    className={`px-3 py-2 rounded-2xl shadow text-sm sm:text-base ${
                       msg.role === "user"
                         ? "bg-[#DCF8C6] text-gray-900 rounded-br-none"
                         : "bg-white text-gray-900 rounded-bl-none"
-                    } max-w-[75%] break-words`}
+                    } max-w-[80%] break-words`}
                   >
                     {msg.content}
                   </span>
@@ -201,7 +205,7 @@ export default function Chatbot() {
             </div>
 
             {/* Input */}
-            <div className="flex items-center p-3 border-t bg-[#F0F0F0] gap-2">
+            <div className="flex items-center p-2 sm:p-3 border-t bg-[#F0F0F0] gap-2">
               <input
                 type="text"
                 value={input}
@@ -211,10 +215,9 @@ export default function Chatbot() {
                     ? "Type your message..."
                     : "अपना संदेश टाइप करें..."
                 }
-                className="flex-1 border border-gray-300 rounded-full px-4 py-2 outline-none focus:ring-2 focus:ring-green-500"
+                className="flex-1 border border-gray-300 rounded-full px-3 py-2 text-sm sm:text-base outline-none focus:ring-2 focus:ring-green-500"
                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               />
-
               <motion.button
                 onClick={() => sendMessage()}
                 className="bg-green-500 text-white p-3 rounded-full shadow-md flex items-center justify-center"
@@ -223,7 +226,6 @@ export default function Chatbot() {
               >
                 <FaPaperPlane size={18} />
               </motion.button>
-
               <motion.button
                 onClick={handleVoiceInput}
                 className="bg-yellow-400 text-white p-3 rounded-full shadow-md flex items-center justify-center"
@@ -242,9 +244,9 @@ export default function Chatbot() {
         onClick={() => setOpen(!open)}
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.1, boxShadow: "0 0 20px #34D399" }}
-        className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-2xl"
+        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-2xl"
       >
-        <FaWater size={28} />
+        <FaWater size={24} />
       </motion.button>
     </div>
   );

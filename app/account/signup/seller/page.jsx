@@ -5,49 +5,95 @@ import { motion } from "framer-motion";
 
 export default function SellerSignup() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-lime-200 px-4 py-10">
+    <div className="relative min-vh-100 d-flex align-items-center justify-content-center overflow-hidden bg-gradient-to-br from-lime-100 via-white to-lime-200 px-3 py-5">
+      {/* Floating Gradient Blobs */}
+      <motion.div
+        className="position-absolute rounded-circle bg-gradient-to-r from-lime-400 to-yellow-400 opacity-40 blur-3xl"
+        initial={{ x: -100, y: -100 }}
+        animate={{
+          x: [0, 60, -60, 0],
+          y: [0, -60, 60, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+        style={{
+          width: "280px",
+          height: "280px",
+          top: "10%",
+          left: "5%",
+          zIndex: 0,
+        }}
+      />
+      <motion.div
+        className="position-absolute rounded-circle bg-gradient-to-r from-yellow-300 to-lime-400 opacity-40 blur-3xl"
+        initial={{ x: 100, y: 100 }}
+        animate={{
+          x: [0, -50, 50, 0],
+          y: [0, 50, -50, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+        style={{
+          width: "240px",
+          height: "240px",
+          bottom: "10%",
+          right: "5%",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Signup Card */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         whileHover={{ scale: 1.02 }}
-        className="bg-lime-100 rounded-3xl shadow-lg p-10 w-full max-w-md border border-lime-300"
+        className="bg-white rounded-4 shadow-2xl p-4 p-md-5 w-100 text-center position-relative border border-lime-300"
+        style={{ maxWidth: "420px", zIndex: 5 }}
       >
-        <h1 className="text-4xl font-extrabold text-lime-900 mb-2 text-center">
+        <h1 className="fw-bold text-lime-800 mb-2 fs-2">
           Create Seller Account
         </h1>
-        <p className="text-sm text-gray-600 text-center mb-6">
-          Join as a seller and start selling your fertilizers 🌿
+        <p className="text-muted mb-4">
+          Join as a seller and start growing your business 🌿
         </p>
 
         {/* Signup Form */}
-        <form className="space-y-4">
+        <form className="d-flex flex-column gap-3">
           <motion.input
             whileFocus={{ scale: 1.02 }}
             type="text"
             placeholder="Full Name"
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-600 transition"
+            className="form-control rounded-3 border border-lime-300 p-3 focus-ring focus-ring-lime"
             required
           />
           <motion.input
             whileFocus={{ scale: 1.02 }}
             type="email"
             placeholder="Email"
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-600 transition"
+            className="form-control rounded-3 border border-lime-300 p-3 focus-ring focus-ring-lime"
             required
           />
           <motion.input
             whileFocus={{ scale: 1.02 }}
             type="password"
             placeholder="Password"
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-600 transition"
+            className="form-control rounded-3 border border-lime-300 p-3 focus-ring focus-ring-lime"
             required
           />
           <motion.input
             whileFocus={{ scale: 1.02 }}
             type="password"
             placeholder="Confirm Password"
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-600 transition"
+            className="form-control rounded-3 border border-lime-300 p-3 focus-ring focus-ring-lime"
             required
           />
 
@@ -55,18 +101,18 @@ export default function SellerSignup() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full bg-lime-500 text-white p-3 rounded-lg font-semibold hover:bg-lime-600 transition"
+            className="btn btn-success w-100 py-2 fw-semibold rounded-3 shadow-sm bg-lime-500 border-0 hover:bg-lime-600 text-white"
           >
             Sign Up
           </motion.button>
         </form>
 
         {/* Redirect */}
-        <div className="mt-6 text-center text-sm text-lime-700">
+        <div className="mt-4 text-center text-sm text-lime-700 fw-medium">
           Already have an account?{" "}
           <Link
             href="/account/login/seller"
-            className="font-semibold hover:underline"
+            className="fw-semibold text-decoration-underline"
           >
             Sign In
           </Link>
