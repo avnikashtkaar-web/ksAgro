@@ -1,36 +1,37 @@
-# ksAgro - Kasthtkaaragro Limited eCommerce Frontend
+# QuickCart - A simple eCommerce website
 
-**ksAgro** is a modern, responsive, and customizable **eCommerce frontend** built using **Next.js** and **Tailwind CSS**.  
-Designed to serve the online shopping experience for Kasthtkaaragro Limited, this project offers a fast and scalable UI foundation for agricultural product sales.
-
----
-
-## 🚀 Features
-
-- Built with **Next.js** and **Tailwind CSS**
-- Mobile-first responsive design
-- Modular and reusable components
-- Customizable themes and layouts
-- Easy to extend with animations, transitions, and new pages
+QuickCart is an open-source **Next.js eCommerce frontend** project.  
+It provides a modern, fast and customizable shopping UI.  
+This repo is **frontend only** – contributors can improve the design, add new pages, animations and more.
 
 ---
 
-## 🛠 Getting Started
+## Features
 
-1. **Clone the repository**
+-   Built with **Next.js + Tailwind CSS**
+-   Responsive design
+-   Reusable components
+-   Customizable layouts and colors
+-   Open for contributions (UI/UX, animations, themes, layouts etc.)
+
+---
+
+## Getting Started
+
+1. Clone the repo
 
     ```bash
-    git clone https://github.com/avnikashtkaar-web/ksAgro.git
-    cd ksAgro
+    git clone https://github.com/GreatStackDev/QuickCart.git
+    cd QuickCart
     ```
 
-2. **Install dependencies**
+2. Install dependencies
 
     ```bash
     npm install
     ```
 
-3. **Run the development server**
+3. Run locally
 
     ```bash
     npm run dev
@@ -38,32 +39,31 @@ Designed to serve the online shopping experience for Kasthtkaaragro Limited, thi
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-We welcome contributions to improve the design, performance, and features of the site.
+We welcome all kinds of contributions! You can:
 
-You can contribute by:
+- Create new pages
+- Improve layouts
+- Add animations and transitions
+- Enhance responsiveness
+- Refactor components
+- Suggest new UI/UX ideas
+- Add themes or color variations
+- Introduce accessibility improvements
+- Add filtering/search features
+- Improve documentation
 
-- Creating new UI pages or sections
-- Enhancing component design and UX
-- Adding animations and transitions
-- Improving responsiveness or accessibility
-- Refactoring code and components
-- Suggesting new layout ideas or themes
-- Improving documentation
-
-Please submit pull requests to the [`feature`](https://github.com/avnikashtkaar-web/ksAgro/tree/feature) branch.
+Check out [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**.
 
 ---
 
-## 🌟 Acknowledgments
+## 🌟 Contributors
 
-This project is maintained by **Kasthtkaaragro Limited**.  
-Built with ❤️ using modern frontend technologies.
-
+Thanks to everyone who contributes to **QuickCart**!

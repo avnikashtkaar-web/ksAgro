@@ -75,21 +75,21 @@ const Banner = () => {
   const slides = [
     {
       src: assets.kohinoor,
-      alt: "Kohinoor Powder 1",
-      title: "Kohinoor Powder 1",
+      alt: "Kohinoor",
+      title: "Kohinoor",
       description: "Kohinoor Powder delivers essential nutrients for healthier plants.",
     },
     {
-      src: assets.kohinoor1,
-      alt: "Kohinoor Powder 2",
-      title: "Kohinoor Powder 2",
-      description: "Kohinoor Powder delivers essential nutrients for healthier plants.",
+      src: assets.agrozyme,
+      alt: "Agrozyme",
+      title: "Agrozyme",
+      description: "Agrozyme enhances plant growth, improves soil fertility, and boosts yield naturally.",
     },
     {
-      src: assets.kohinoor2,
-      alt: "Kohinoor Powder 3",
-      title: "Kohinoor Powder 3",
-      description: "Kohinoor Powder delivers essential nutrients for healthier plants.",
+      src: assets.starplus,
+      alt: "starplus",
+      title: "Starplus",
+      description: "Starplus enhances crop health and boosts yield with balanced nutrients.",
     },
   ];
 
@@ -129,9 +129,9 @@ const Banner = () => {
         <p className="max-w-[600px] mx-auto text-gray-700 mb-4">
           {slides[currentSlide]?.description}
         </p>
-        <button className="px-16 py-3 bg-green-600 rounded-lg text-white font-semibold hover:bg-green-700 transition">
+        {/* <button className="px-16 py-3 bg-green-600 rounded-lg text-white font-semibold hover:bg-green-700 transition">
           Buy Now
-        </button>
+        </button> */}
       </div>
     </div>
   );

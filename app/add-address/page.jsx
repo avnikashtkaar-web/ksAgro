@@ -1,94 +1,159 @@
-'use client'
+"use client";
 import { assets } from "@/assets/assets";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const AddAddress = () => {
+  const [address, setAddress] = useState({
+    fullName: "",
+    phoneNumber: "",
+    pincode: "",
+    area: "",
+    city: "",
+    state: "",
+  });
 
-    const [address, setAddress] = useState({
-        fullName: '',
-        phoneNumber: '',
-        pincode: '',
-        area: '',
-        city: '',
-        state: '',
-    })
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    console.log("Address Saved:", address);
+  };
 
-    const onSubmitHandler = async (e) => {
-        e.preventDefault();
+  return (
+    <>
+      <Navbar />
+      <div className="min-h-screen d-flex flex-column flex-md-row align-items-center justify-content-center bg-gradient-to-br from-orange-50 via-white to-orange-100 py-5 px-3 px-md-5">
+        {/* Form Section */}
+        <motion.form
+          onSubmit={onSubmitHandler}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="bg-white rounded-4 shadow-2xl p-4 p-md-5 w-100"
+          style={{ maxWidth: "500px", zIndex: 5 }}
+        >
+          <h2 className="text-center fs-3 fw-bold text-orange-700 mb-3">
+            Add Shipping Address
+          </h2>
+          <p className="text-center text-muted mb-4">
+            Please enter your full delivery details below 🚚
+          </p>
 
-    }
+          {/* Input Fields */}
+          <div className="d-flex flex-column gap-3">
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
+              type="text"
+              placeholder="Full Name"
+              className="form-control py-2"
+              onChange={(e) =>
+                setAddress({ ...address, fullName: e.target.value })
+              }
+              value={address.fullName}
+              required
+            />
 
-    return (
-        <>
-            <Navbar />
-            <div className="px-6 md:px-16 lg:px-32 py-16 flex flex-col md:flex-row justify-between">
-                <form onSubmit={onSubmitHandler} className="w-full">
-                    <p className="text-2xl md:text-3xl text-gray-500">
-                        Add Shipping <span className="font-semibold text-orange-600">Address</span>
-                    </p>
-                    <div className="space-y-3 max-w-sm mt-10">
-                        <input
-                            className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
-                            type="text"
-                            placeholder="Full name"
-                            onChange={(e) => setAddress({ ...address, fullName: e.target.value })}
-                            value={address.fullName}
-                        />
-                        <input
-                            className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
-                            type="text"
-                            placeholder="Phone number"
-                            onChange={(e) => setAddress({ ...address, phoneNumber: e.target.value })}
-                            value={address.phoneNumber}
-                        />
-                        <input
-                            className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
-                            type="text"
-                            placeholder="Pin code"
-                            onChange={(e) => setAddress({ ...address, pincode: e.target.value })}
-                            value={address.pincode}
-                        />
-                        <textarea
-                            className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500 resize-none"
-                            type="text"
-                            rows={4}
-                            placeholder="Address (Area and Street)"
-                            onChange={(e) => setAddress({ ...address, area: e.target.value })}
-                            value={address.area}
-                        ></textarea>
-                        <div className="flex space-x-3">
-                            <input
-                                className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
-                                type="text"
-                                placeholder="City/District/Town"
-                                onChange={(e) => setAddress({ ...address, city: e.target.value })}
-                                value={address.city}
-                            />
-                            <input
-                                className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
-                                type="text"
-                                placeholder="State"
-                                onChange={(e) => setAddress({ ...address, state: e.target.value })}
-                                value={address.state}
-                            />
-                        </div>
-                    </div>
-                    <button type="submit" className="max-w-sm w-full mt-6 bg-orange-600 text-white py-3 hover:bg-orange-700 uppercase">
-                        Save address
-                    </button>
-                </form>
-                <Image
-                    className="md:mr-16 mt-16 md:mt-0"
-                    src={assets.my_location_image}
-                    alt="my_location_image"
-                />
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
+              type="text"
+              placeholder="Phone Number"
+              className="form-control py-2"
+              onChange={(e) =>
+                setAddress({ ...address, phoneNumber: e.target.value })
+              }
+              value={address.phoneNumber}
+              required
+            />
+
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
+              type="text"
+              placeholder="Pincode"
+              className="form-control py-2"
+              onChange={(e) =>
+                setAddress({ ...address, pincode: e.target.value })
+              }
+              value={address.pincode}
+              required
+            />
+
+            <motion.textarea
+              whileFocus={{ scale: 1.02 }}
+              placeholder="Address (Area and Street)"
+              rows="4"
+              className="form-control py-2"
+              onChange={(e) =>
+                setAddress({ ...address, area: e.target.value })
+              }
+              value={address.area}
+              required
+            />
+
+            <div className="d-flex flex-column flex-md-row gap-3">
+              <motion.input
+                whileFocus={{ scale: 1.02 }}
+                type="text"
+                placeholder="City/District/Town"
+                className="form-control py-2"
+                onChange={(e) =>
+                  setAddress({ ...address, city: e.target.value })
+                }
+                value={address.city}
+                required
+              />
+
+              <motion.input
+                whileFocus={{ scale: 1.02 }}
+                type="text"
+                placeholder="State"
+                className="form-control py-2"
+                onChange={(e) =>
+                  setAddress({ ...address, state: e.target.value })
+                }
+                value={address.state}
+                required
+              />
             </div>
-            <Footer />
-        </>
-    );
+          </div>
+
+          {/* Submit Button */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
+            className="btn btn-warning w-100 mt-4 fw-semibold text-white py-2"
+            style={{
+              backgroundColor: "#f97316",
+              borderColor: "#f97316",
+            }}
+          >
+            Save Address
+          </motion.button>
+        </motion.form>
+
+        {/* Image Section */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mt-5 mt-md-0 ms-md-5 d-flex justify-content-center"
+        >
+          <Image
+            src={assets.my_location_image}
+            alt="Location illustration"
+            className="img-fluid rounded-3 shadow-lg"
+            style={{
+              maxWidth: "380px",
+              height: "auto",
+            }}
+          />
+        </motion.div>
+      </div>
+      <Footer />
+    </>
+  );
 };
 
 export default AddAddress;
