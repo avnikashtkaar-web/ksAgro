@@ -5,6 +5,7 @@ import Image from "next/image";
 import { assets } from "@/assets/assets";
 import Chatbot from "@/components/Chatbot";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 const shopProducts = [
   {
@@ -47,7 +48,7 @@ const shopProducts = [
 
 const Shop = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
-
+const { translations } = useLanguage();
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0 },
@@ -56,9 +57,9 @@ const Shop = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 via-white to-green-100 py-14 px-3 md:px-16">
       {/* Header */}
-      <h1 className="text-3xl md:text-4xl font-extrabold text-green-900 text-center mb-10">
-        Our Products
-      </h1>
+     <h1 className="text-3xl md:text-4xl font-extrabold text-green-900 text-center mb-10">
+  {translations.ourProductsTitle}
+</h1>
 
       {/* Product Grid */}
       <div className="row g-4 justify-content-center">

@@ -224,7 +224,7 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { assets } from "@/assets/assets";
-import useTranslation from "@/components/useTranslation";
+//import useTranslation from "@/components/useTranslation";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -240,6 +240,7 @@ import {
 import { FaVolumeUp, FaVolumeMute, FaChevronDown } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAppContext } from "@/context/AppContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 
 const Navbar = () => {
@@ -253,7 +254,7 @@ const Navbar = () => {
   const [siteLangOpen, setSiteLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { t } = useTranslation(siteLang === "English" ? "en" : "hi");
+ const { translations, toggleLanguage } = useLanguage();
 
   const audioFiles = {
     hi: "/farming-hindi.mp3",
@@ -388,7 +389,7 @@ const Navbar = () => {
                 after:bg-gradient-to-r after:from-pink-500 after:via-yellow-400 after:to-green-400 
                 hover:after:w-full after:transition-all after:duration-500 hover:after:animate-gradient-move"
               >
-                {/* KashtkaarAgroBioCare */}{t("brand")}
+                {/* KashtkaarAgroBioCare */}{translations.brand}
               </motion.span>
             </Link>
           </div>
@@ -406,60 +407,61 @@ const Navbar = () => {
           {/* MIDDLE: Nav Links (Desktop) */}
           <div className="hidden md:flex items-center gap-8 font-medium">
             <Link href="/" className={navLinkClass}>
-              <HomeIcon className="w-4 h-4" /> {t("home")}
+              <HomeIcon className="w-4 h-4" /> {translations.home}
             </Link>
             <Link href="/shop" className={navLinkClass}>
-              <ShoppingBag className="w-4 h-4" /> {t("shop")}
+              <ShoppingBag className="w-4 h-4" /> {translations.shop}
             </Link>
             <Link href="/about" className={navLinkClass}>
-              <Info className="w-4 h-4" /> {t("about")}
+              <Info className="w-4 h-4" /> {translations.about}
             </Link>
             <Link href="/contact" className={navLinkClass}>
-              <Phone className="w-4 h-4" /> {t("contact")}
+              <Phone className="w-4 h-4" /> {translations.contact}
             </Link>
 
             {/* New Language Button */}
-            <div className="relative ml-3">
-              <button
-                onClick={() => setSiteLangOpen(!siteLangOpen)}
-                className="flex items-center gap-1 text-white bg-green-600 px-3 py-1.5 rounded-full hover:bg-green-700 transition text-sm"
-              >
-                <Globe className="w-4 h-4" /> {siteLang}{" "}
-                <FaChevronDown size={10} />
-              </button>
+           <div className="relative ml-3">
+  <button
+    onClick={() => setSiteLangOpen(!siteLangOpen)}
+    className="flex items-center gap-1 text-white bg-green-600 px-3 py-1.5 rounded-full hover:bg-green-700 transition text-sm"
+  >
+    <Globe className="w-4 h-4" /> {translations.language}{" "}
+    <FaChevronDown size={10} />
+  </button>
 
-              <AnimatePresence>
-                {siteLangOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full mt-1 bg-green-100 border border-green-300 rounded shadow-md flex flex-col w-24 z-50"
-                  >
-                    <button
-                      onClick={() => {
-                        setSiteLang("English");
-                        setSiteLangOpen(false);
-                      }}
-                      className="px-3 py-1 hover:bg-green-200 text-green-700 text-sm"
-                    >
-                 {t("english")}
-                    </button>
+  <AnimatePresence>
+    {siteLangOpen && (
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2 }}
+        className="absolute top-full mt-1 bg-green-100 border border-green-300 rounded shadow-md flex flex-col w-24 z-50"
+      >
+        <button
+          onClick={() => {
+            toggleLanguage("English");
+            setSiteLangOpen(false);
+          }}
+          className="px-3 py-1 hover:bg-green-200 text-green-700 text-sm"
+        >
+          {translations.english}
+        </button>
 
-                    <button
-                      onClick={() => {
-                        setSiteLang("Hindi");
-                        setSiteLangOpen(false);
-                      }}
-                      className="px-3 py-1 hover:bg-green-200 text-green-700 text-sm"
-                    >
-                     {t("hindi")}
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+        <button
+          onClick={() => {
+            toggleLanguage("Hindi");
+            setSiteLangOpen(false);
+          }}
+          className="px-3 py-1 hover:bg-green-200 text-green-700 text-sm"
+        >
+          {translations.hindi}
+        </button>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
+
           </div>
           {/*old code for opening admin and account pages
           RIGHT: Admin + Search + Account
@@ -500,12 +502,12 @@ const Navbar = () => {
                   disabled
                   className="text-sm bg-green-600 text-white px-4 py-2 rounded-full shadow cursor-not-allowed opacity-90 relative z-[60]"
                 >
-               {  t("admin")  }
+               {translations.admin}
                 </button>
 
                 {/* Tooltip */}
                 <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-green-700 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-[9999] shadow-lg">
-                  {t("comingSoon")  }
+                  {translations.comingSoon  }
                 </div>
               </motion.div>
             )}
@@ -529,10 +531,10 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
             >
               <Image src={assets.user_icon} alt="user" width={24} height={24} />
-           {t("account")  }
+           {translations.account}
               {/* Tooltip */}
               <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-green-700 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-[9999] shadow-lg">
-               {t ("comingSoon") } 
+               {translations.comingSoon }
               </div>
             </motion.div>
           </div>

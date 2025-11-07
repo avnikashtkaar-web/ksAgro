@@ -11,10 +11,10 @@ import {
   FaMobileAlt,
 } from "react-icons/fa";
 import { usePathname } from "next/navigation";
-
+import { useLanguage } from "@/context/LanguageContext";
 const Footer = () => {
   const pathname = usePathname();
-
+ const { translations } = useLanguage();
   return (
     <footer className="bg-green-800 text-white relative">
       {/* Main Footer Section */}
@@ -22,12 +22,12 @@ const Footer = () => {
         {/* Brand Name & Description */}
         <div className="w-full md:w-1/3 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-            KashtkaarAgroBioCare
+            {/* KashtkaarAgroBioCare */}{translations.brand}
           </h1>
           <p className="mt-4 sm:mt-6 text-sm sm:text-base text-green-100 leading-relaxed">
-            We provide high-quality fertilizers to ensure your crops grow
+            {/* We provide high-quality fertilizers to ensure your crops grow
             healthy and abundant. Our products help farmers achieve maximum
-            yield with sustainable practices.
+            yield with sustainable practices. */}{translations.footerDescription  }
           </p>
         </div>
 
@@ -37,22 +37,22 @@ const Footer = () => {
           <ul className="space-y-2 text-green-100 text-sm sm:text-base">
             <li>
               <a className="hover:text-white transition-colors" href="#">
-                Home
+                {/* Home */}{translations.home  }
               </a>
             </li>
             <li>
               <a className="hover:text-white transition-colors" href="/about">
-                About Us
+                {/* About Us */}{translations.about  }
               </a>
             </li>
             <li>
               <a className="hover:text-white transition-colors" href="/contact">
-                Contact Us
+                {/* Contact Us */}{translations.contact  }
               </a>
             </li>
             <li>
               <a className="hover:text-white transition-colors" href="#">
-                Privacy Policy
+                {/* Privacy Policy */}{translations.privacyPolicy   }
               </a>
             </li>
             <li>
@@ -62,7 +62,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
               >
-                KashtkaarAgro PDF
+                {/* KashtkaarAgro PDF */}{translations.pdfLink }
               </a>
             </li>
           </ul>
@@ -70,12 +70,15 @@ const Footer = () => {
 
         {/* Contact Info + Social Media */}
         <div className="w-full sm:w-1/2 md:w-1/4 text-center md:text-left">
-          <h2 className="font-semibold text-lg mb-4 sm:mb-5">Get in Touch</h2>
+          <h2 className="font-semibold text-lg mb-4 sm:mb-5">{translations.getInTouch}</h2>
           <div className="text-green-100 text-sm sm:text-base space-y-1 sm:space-y-2">
             <p>📞 6263895372 , 9131654462</p>
-            <p>✉️ kashtkaaragrobiocare@gmail.com</p>
-            <p>🏢 32 Shivani Home, Bypass Road</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;Karond Bhopal - 462038 (M.P)</p>
+            {/* <p>✉️ kashtkaaragrobiocare@gmail.com</p> */}
+            <p>{translations.email}</p>
+            {/* <p>🏢 32 Shivani Home, Bypass Road</p> */}
+            <p>{translations.address1}</p>
+            {/* <p>&nbsp;&nbsp;&nbsp;&nbsp;Karond Bhopal - 462038 (M.P)</p> */}
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;{translations.address2}</p>
           </div>
 
           {/* Social Media Icons */}
@@ -126,7 +129,8 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="py-4 text-center text-green-200 text-xs sm:text-sm">
-        © 2025 KashtkaarAgroBioCare. All Rights Reserved.
+        {/* © 2025 KashtkaarAgroBioCare. All Rights Reserved. */}
+        {translations.rights}
       </div>
 
       {/* ✅ Floating Buttons: Left side, well-separated */}

@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import Chatbot from "@/components/Chatbot";
+import { Translation } from "react-i18next";
+import { useLanguage } from "@/context/LanguageContext";
+
 
 const Contact = () => {
   const [isMounted, setIsMounted] = useState(false);
-
+const { translations } = useLanguage();
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -21,12 +24,20 @@ const Contact = () => {
         style={{ maxWidth: "1200px" }}
       >
         {/* Title Section */}
-        <h1 className="text-center fw-bold text-success mb-3 fs-3 fs-md-2">
+        {/* <h1 className="text-center fw-bold text-success mb-3 fs-3 fs-md-2">
           Get in Touch With Us
+        </h1> */}
+        <h1 className="text-center fw-bold text-success mb-3 fs-3 fs-md-2">
+         {translations.contactTitle}
         </h1>
-        <p className="text-center text-secondary mb-4 fs-6 fs-md-5">
+        {/* <p className="text-center text-secondary mb-4 fs-6 fs-md-5">
           Have questions about our products or need assistance? We’d love to hear from you!
+        </p> */}
+
+        <p className="text-center text-secondary mb-4 fs-6 fs-md-5">
+         {translations.contactSubtitle}
         </p>
+
 
         {/* Grid layout (Bootstrap + Tailwind mix) */}
         <div className="row g-4">
@@ -45,7 +56,8 @@ const Contact = () => {
               className="d-flex align-items-center gap-3 p-3 rounded-3 bg-green-50 shadow-sm mb-3 hover:shadow-md transition"
             >
               <Mail className="text-success" size={22} />
-              <span className="text-secondary fs-6">contact@kashtkaaragro.com</span>
+              {/* <span className="text-secondary fs-6">contact@kashtkaaragro.com</span> */}
+              <span className="text-secondary fs-6">{translations.emailAddress}</span>
             </motion.div>
 
             <motion.div
@@ -53,8 +65,11 @@ const Contact = () => {
               className="d-flex align-items-center gap-3 p-3 rounded-3 bg-green-50 shadow-sm hover:shadow-md transition"
             >
               <MapPin className="text-success" size={22} />
-              <span className="text-secondary fs-6">
+              {/* <span className="text-secondary fs-6">
                 23, Shivani Homes Bypass Road, Karond, Bhopal, India
+              </span> */}
+              <span className="text-secondary fs-6">
+               {translations.addressFull}
               </span>
             </motion.div>
 
@@ -69,7 +84,8 @@ const Contact = () => {
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Kashtkaar Agro Location"
+                  // title="Kashtkaar Agro Location"
+                  title={translations.mapTitle}
                 ></iframe>
               </div>
             )}
@@ -82,16 +98,21 @@ const Contact = () => {
               className="bg-green-50 rounded-3 p-4 shadow-sm"
             >
               <div className="mb-3">
-                <label className="form-label fw-semibold text-success">Name</label>
+                {/* <label className="form-label fw-semibold text-success">Name</label> */}
+                <label className="form-label fw-semibold text-success">{translations.formName}</label>
+                
                 <input
                   type="text"
                   className="form-control border-success-subtle"
-                  placeholder="Your Name"
+                  // placeholder="Your Name"
+                  placeholder={translations.formNamePlaceholder}
                 />
               </div>
 
               <div className="mb-3">
-                <label className="form-label fw-semibold text-success">Email</label>
+                {/* <label className="form-label fw-semibold text-success">Email</label> */}
+                <label className="form-label fw-semibold text-success">{translations.emailLabel}</label>
+                
                 <input
                   type="email"
                   className="form-control border-success-subtle"
@@ -100,11 +121,13 @@ const Contact = () => {
               </div>
 
               <div className="mb-3">
-                <label className="form-label fw-semibold text-success">Message</label>
+                {/* <label className="form-label fw-semibold text-success">Message</label> */}
+                <label className="form-label fw-semibold text-success">{translations.formMessage}</label>
                 <textarea
                   rows="4"
                   className="form-control border-success-subtle"
-                  placeholder="Your Message..."
+                  // placeholder="Your Message..."
+                   placeholder={translations.formMessagePlaceholder}
                 ></textarea>
               </div>
 
@@ -114,7 +137,8 @@ const Contact = () => {
                 type="submit"
                 className="btn btn-success w-100 py-2 d-flex align-items-center justify-content-center gap-2 shadow-sm"
               >
-                <Send size={18} /> Send Message
+                {/* <Send size={18} /> Send Message */}
+                           <Send size={18} /> {translations.sendButton}
               </motion.button>
             </motion.form>
           </div>

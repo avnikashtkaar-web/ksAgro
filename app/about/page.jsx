@@ -7,16 +7,23 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Chatbot from "@/components/Chatbot";
-
+import { useLanguage } from "@/context/LanguageContext";
 
 const About = () => {
+   const { translations } = useLanguage();
   const sliderData = [
-    { src: "/images/agrozyme.png", heading: "Empowering Farmers", subtitle: "Sustainable solutions for healthier crops." },
-    { src: "/images/kohinoor.png", heading: "Boosting Productivity", subtitle: "Innovative bio-products for maximum yield." },
-    { src: "/images/kohinoor.png", heading: "Eco-Friendly Agriculture", subtitle: "Protecting soil and environment together." },
-    { src: "/images/kohinoor.png", heading: "Trusted by Farmers", subtitle: "Delivering quality products for every farm." },
+    // { src: "/images/agrozyme.png", heading: "Empowering Farmers", subtitle: "Sustainable solutions for healthier crops." },
+    // { src: "/images/kohinoor.png", heading: "Boosting Productivity", subtitle: "Innovative bio-products for maximum yield." },
+    // { src: "/images/kohinoor.png", heading: "Eco-Friendly Agriculture", subtitle: "Protecting soil and environment together." },
+    // { src: "/images/kohinoor.png", heading: "Trusted by Farmers", subtitle: "Delivering quality products for every farm." },
+  
+  { src: "/images/agrozyme.png", heading: translations.slider1Heading, subtitle: translations.slider1Sub },
+    { src: "/images/kohinoor.png", heading: translations.slider2Heading, subtitle: translations.slider2Sub },
+    { src: "/images/kohinoor.png", heading: translations.slider3Heading, subtitle: translations.slider3Sub },
+    { src: "/images/kohinoor.png", heading: translations.slider4Heading, subtitle: translations.slider4Sub },
+  
   ];
-// base branch
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -44,18 +51,24 @@ const About = () => {
   const cardData = [
     {
       img: "/images/kohinoor.png",
-      title: "Eco Solutions",
-      desc: "We offer eco-friendly fertilizers and bio-care solutions.",
+      // title: "Eco Solutions",
+      // desc: "We offer eco-friendly fertilizers and bio-care solutions.",
+      title: translations.card1Title,
+      desc: translations.card1Desc,
     },
     {
       img: "/images/agrozyme.png",
-      title: "Farmer Support",
-      desc: "Helping farmers grow with knowledge and innovation.",
+      // title: "Farmer Support",
+      // desc: "Helping farmers grow with knowledge and innovation.",
+      title: translations.card2Title,
+      desc: translations.card2Desc,
     },
     {
       img: "/images/starplus.png",
-      title: "Trusted Quality",
-      desc: "Delivering excellence with every product we provide.",
+      // title: "Trusted Quality",
+      // desc: "Delivering excellence with every product we provide.",
+      title: translations.card3Title,
+      desc: translations.card3Desc,
     },
   ];
 
@@ -69,7 +82,7 @@ const About = () => {
           transition={{ duration: 0.7 }}
           className="text-3xl md:text-4xl font-bold text-green-800"
         >
-          ABOUT US
+          {/* ABOUT US */}{translations.aboutHeader}
         </motion.h2>
       </section>
 
@@ -129,16 +142,26 @@ const About = () => {
             transition={{ duration: 0.7 }}
           >
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-green-800">Our Mission</h2>
-              <p className="text-gray-700 leading-relaxed">
+              {/* <h2 className="text-2xl md:text-3xl font-bold text-green-800">Our Mission</h2> */}
+                            <h2 className="text-2xl md:text-3xl font-bold text-green-800">{translations.missionTitle}</h2>
+              {/* <p className="text-gray-700 leading-relaxed">
                 Our mission is to provide high-quality fertilizers and bio-products that ensure
                 healthier crops, higher yields, and sustainable farming practices.
+              </p> */}
+
+               <p className="text-gray-700 leading-relaxed">
+                {translations.missionDesc}
               </p>
 
-              <h2 className="text-2xl md:text-3xl font-bold text-green-800">Our Vision</h2>
-              <p className="text-gray-700 leading-relaxed">
+              {/* <h2 className="text-2xl md:text-3xl font-bold text-green-800">Our Vision</h2> */}
+                 <h2 className="text-2xl md:text-3xl font-bold text-green-800">{translations.visionTitle}</h2>
+
+              {/* <p className="text-gray-700 leading-relaxed">
                 To become a trusted partner for every farmer by revolutionizing agriculture with
                 innovation, care, and responsibility.
+              </p> */}
+              <p className="text-gray-700 leading-relaxed">
+                {translations.visionDesc}
               </p>
             </div>
           </motion.div>
@@ -148,23 +171,31 @@ const About = () => {
       {/* Core Values */}
       <section className="px-4 md:px-10 py-16 bg-green-800 text-white rounded-t-3xl">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Core Values</h2>
+          {/* <h2 className="text-3xl font-bold text-center mb-12">Our Core Values</h2> */}
+                    <h2 className="text-3xl font-bold text-center mb-12">{translations.coreValuesTitle}</h2>
           <div className="row g-4">
             {[
               {
                 icon: <Leaf className="w-10 h-10 text-lime-400" />,
-                title: "Sustainability",
-                desc: "We promote eco-friendly solutions that protect soil and environment.",
-              },
+                // title: "Sustainability",
+                title: translations.value1Title,
+            
+                      // desc: "We promote eco-friendly solutions that protect soil and environment.",
+                desc: translations.value1Desc,},
               {
                 icon: <Users className="w-10 h-10 text-lime-400" />,
-                title: "Community",
-                desc: "We empower farming communities with knowledge and resources.",
+                // title: "Community",
+                // desc: "We empower farming communities with knowledge and resources.",
+
+                title: translations.value2Title,
+                desc: translations.value2Desc,
               },
               {
                 icon: <Award className="w-10 h-10 text-lime-400" />,
-                title: "Excellence",
-                desc: "We strive for innovation and excellence in every product we deliver.",
+                // title: "Excellence",
+                // desc: "We strive for innovation and excellence in every product we deliver.",
+                title: translations.value3Title,
+                desc: translations.value3Desc,
               },
             ].map((val, i) => (
               <div key={i} className="col-12 col-md-4">
@@ -219,16 +250,19 @@ const About = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
         >
-          Join Us on Our Journey
+          {/* Join Us on Our Journey */}
+          {translations.joinUsTitle}
         </motion.h2>
         <p className="mt-4 text-gray-700 max-w-xl mx-auto">
-          Together, let’s create a greener, healthier, and more sustainable future for farming.
+          {/* Together, let’s create a greener, healthier, and more sustainable future for farming. */}
+          {translations.joinUsDesc}
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           className="mt-8 px-8 py-3 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition"
         >
-          Learn More
+          {/* Learn More */}
+          {translations.learnMore}
         </motion.button>
       </section>
 

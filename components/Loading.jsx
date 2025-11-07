@@ -1,5 +1,5 @@
 import React from 'react'
-//local commit
+
 const Loading = () => {
     return (
         <div className="flex justify-center items-center h-[70vh]">

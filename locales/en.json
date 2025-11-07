@@ -1,5 +1,5 @@
 {
-    "brand": "KashtkaarAgroBioCare",
+  "brand": "KashtkaarAgroBioCare",
   "home": "Home",
   "shop": "Shop",
   "about": "About Us",
@@ -9,5 +9,108 @@
   "hindi": "Hindi",
   "admin": "Admin",
   "account": "Account",
-  "comingSoon": "Coming soon"
+  "comingSoon": "Coming soon",
+
+  "footerDescription": "We provide high-quality fertilizers to ensure your crops grow healthy and abundant. Our products help farmers achieve maximum yield with sustainable practices.",
+  "company": "Company",
+  "privacyPolicy": "Privacy Policy",
+  "pdfLink": "KashtkaarAgro PDF",
+  "getInTouch": "Get in Touch",
+  "phone": "📞 6263895372 , 9131654462",
+  "email": "✉️ kashtkaaragrobiocare@gmail.com",
+  "address1": "🏢 32 Shivani Home, Bypass Road",
+  "address2": "    Karond Bhopal - 462038 (M.P)",
+  "rights": "© 2025 KashtkaarAgroBioCare. All Rights Reserved.",
+  "callTooltip": "Missed Call / Call Us",
+  "whatsappTooltip": "Chat on WhatsApp",
+  "whatsappMessage": "🙏🏻 Namaste! I am Kashtkaar Agro Bio Care Assistant. How can I help you today?",
+"ourProductsTitle": "Our Products",
+
+
+
+  "aboutHeader": "About Us",
+  "slider1Heading": "Empowering Farmers",
+  "slider1Sub": "Sustainable solutions for healthier crops.",
+  "slider2Heading": "Boosting Productivity",
+  "slider2Sub": "Innovative bio-products for maximum yield.",
+  "slider3Heading": "Eco-Friendly Agriculture",
+  "slider3Sub": "Protecting soil and environment together.",
+  "slider4Heading": "Trusted by Farmers",
+  "slider4Sub": "Delivering quality products for every farm.",
+  "missionTitle": "Our Mission",
+  "missionDesc": "Our mission is to provide high-quality fertilizers and bio-products that ensure healthier crops, higher yields, and sustainable farming practices.",
+  "visionTitle": "Our Vision",
+  "visionDesc": "To become a trusted partner for every farmer by revolutionizing agriculture with innovation, care, and responsibility.",
+  "coreValuesTitle": "Our Core Values",
+  "value1Title": "Sustainability",
+  "value1Desc": "We promote eco-friendly solutions that protect soil and environment.",
+  "value2Title": "Community",
+  "value2Desc": "We empower farming communities with knowledge and resources.",
+  "value3Title": "Excellence",
+  "value3Desc": "We strive for innovation and excellence in every product we deliver.",
+  "card1Title": "Eco Solutions",
+  "card1Desc": "We offer eco-friendly fertilizers and bio-care solutions.",
+  "card2Title": "Farmer Support",
+  "card2Desc": "Helping farmers grow with knowledge and innovation.",
+  "card3Title": "Trusted Quality",
+  "card3Desc": "Delivering excellence with every product we provide.",
+  "joinUsTitle": "Join Us on Our Journey",
+  "joinUsDesc": "Together, let’s create a greener, healthier, and more sustainable future for farming.",
+  "learnMore": "Learn More",
+
+  "contactTitle": "Get in Touch With Us",
+  "contactSubtitle": "Have questions about our products or need assistance? We’d love to hear from you!",
+  "phoneLabel": "Phone",
+  "phoneNumbers": "+91 3165 4462 , 6263895371",
+  "emailLabel": "Email",
+  "emailAddress": "contact@kashtkaaragro.com",
+  "addressLabel": "Address",
+  "addressFull": "23, Shivani Homes Bypass Road, Karond, Bhopal, India",
+  "formName": "Name",
+  "formNamePlaceholder": "Your Name",
+  "formEmail": "Email",
+  "formEmailPlaceholder": "you@example.com",
+  "formMessage": "Message",
+  "formMessagePlaceholder": "Your Message...",
+  "sendButton": "Send Message",
+  "mapTitle": "Kashtkaar Agro Location",
+"heading": "Subscribe now & get 20% off",
+  "description1": "Stay updated with the latest farming tips, sustainable practices, and exclusive discounts on our high-quality fertilizers.",
+  "description2": "Subscribe now and boost your crop yield!",
+  "placeholder": "Enter your email address",
+  "subscribeButton": "Subscribe",
+  "submitting": "Submitting...",
+  "successMessage": "Thank you for subscribing! 🎉",
+  "invalidEmail": "Please enter a valid email.",
+  "errorMessage": "Something went wrong.",
+  "serverError": "Server error! Please try again.",
+  "whatsappText": "Chat with us on WhatsApp",
+  "assistantMessage": "🙏🏻 Namaste! I am Khashtkaar Agro Bio Care Assistant. How can I help you today?",
+
+  "products": {
+  "kohinoor_title": "Kohinoor",
+  "kohinoor_desc": "Kohinoor Powder delivers essential nutrients for healthier, greener, and more productive plants.",
+  
+  "agrozyme_title": "Agrozyme",
+  "agrozyme_desc": "Agrozyme enhances plant growth, improves soil fertility, and boosts yield naturally.",
+  
+  "shakti_title": "Shakti",
+  "shakti_desc": "Shakti improves soil fertility and strengthens plant growth for higher yield.",
+  
+  "starplus_title": "Starplus",
+  "starplus_desc": "Starplus enhances crop health and boosts yield with balanced nutrients.",
+  
+  "vijay_growing_title": "Vijay Growing",
+  "vijay_growing_desc": "Milk Magic boosts soil fertility and promotes healthy, sustainable crop growth.",
+  
+  "fungi_killer_title": "Fungi Killer",
+  "fungi_killer_desc": "Fungi Killer protects crops from fungal infections, ensuring healthy plant growth."
 }
+
+}
+
+
+
+
+
+

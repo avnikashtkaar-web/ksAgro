@@ -6,7 +6,7 @@ export default function useTranslation(lang) {
 
   useEffect(() => {
     import(`../locales/${lang}.json`)
-      .then((module) => setTranslations(module))
+     .then((module) => setTranslations(module.default || module))
       .catch(() => setTranslations({}));
   }, [lang]);
 

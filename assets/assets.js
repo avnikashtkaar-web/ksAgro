@@ -20,35 +20,16 @@ import heart_icon from "./heart_icon.svg";
 import star_icon from "./star_icon.svg";
 import redirect_icon from "./redirect_icon.svg";
 import star_dull_icon from "./star_dull_icon.svg";
-import header_headphone_image from "./header_headphone_image.png";
-import header_playstation_image from "./header_playstation_image.png";
-import header_macbook_image from "./header_macbook_image.png";
-import macbook_image from "./macbook_image.png";
-import bose_headphone_image from "./bose_headphone_image.png";
-import apple_earphone_image from "./apple_earphone_image.png";
-import samsung_s23phone_image from "./samsung_s23phone_image.png";
-import venu_watch_image from "./venu_watch_image.png";
-import upload_area from "./upload_area.png";
-import cannon_camera_image from "./cannon_camera_image.png";
-import sony_airbuds_image from "./sony_airbuds_image.png";
-import asus_laptop_image from "./asus_laptop_image.png";
-import projector_image from "./projector_image.png";
-import playstation_image from "./playstation_image.png";
-import girl_with_headphone_image from "./girl_with_headphone_image.png";
-import girl_with_earphone_image from "./girl_with_earphone_image.png";
-import md_controller_image from "./md_controller_image.png";
-import sm_controller_image from "./sm_controller_image.png";
-import jbl_soundbox_image from "./jbl_soundbox_image.png";
-import boy_with_laptop_image from "./boy_with_laptop_image.png";
-import checkmark from "./checkmark.png";
-import product_details_page_apple_earphone_image1 from "./product_details_page_apple_earphone_image1.png";
-import product_details_page_apple_earphone_image2 from "./product_details_page_apple_earphone_image2.png";
-import product_details_page_apple_earphone_image3 from "./product_details_page_apple_earphone_image3.png";
-import product_details_page_apple_earphone_image4 from "./product_details_page_apple_earphone_image4.png";
-import product_details_page_apple_earphone_image5 from "./product_details_page_apple_earphone_image5.png";
 
+import upload_area from "./upload_area.png";
+
+
+import checkmark from "./checkmark.png";
+
+import { useLanguage } from "@/context/LanguageContext";
 
 export const assets = {
+    
    agrozyme:"/images/agrozyme.png",
   kohinoor: "/images/kohinoor.png",
   shakti: "/images/shakti.png",
@@ -82,31 +63,7 @@ export const assets = {
   star_icon,
   redirect_icon,
   star_dull_icon,
-  header_headphone_image,
-  header_playstation_image,
-  header_macbook_image,
-  macbook_image,
-  bose_headphone_image,
-  apple_earphone_image,
-  samsung_s23phone_image,
-  venu_watch_image,
   upload_area,
-  cannon_camera_image,
-  sony_airbuds_image,
-  asus_laptop_image,
-  projector_image,
-  playstation_image,
-  girl_with_headphone_image,
-  girl_with_earphone_image,
-  md_controller_image,
-  sm_controller_image,
-  jbl_soundbox_image,
-  boy_with_laptop_image,
-  product_details_page_apple_earphone_image1,
-  product_details_page_apple_earphone_image2,
-  product_details_page_apple_earphone_image3,
-  product_details_page_apple_earphone_image4,
-  product_details_page_apple_earphone_image5,
   checkmark
 };
 
@@ -143,126 +100,375 @@ export const HomeIcon = () => (
 );
 
 
+// export const productsDummyData = [
+//   {
+//     _id: "1",
+//     name: "Kohinoor",
+//     description: "Kohinoor Powder delivers essential nutrients for healthier, greener, and more productive plants.",
+//     price: 100,
+//     offerPrice: 90,
+//     image: ["/images/kohinoor.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "2",
+//     name: "Agrozyme",
+//     description: "Agrozyme enhances plant growth, improves soil fertility, and boosts yield naturally.",
+//     price: 110,
+//     offerPrice: 95,
+//     image: ["/images/agrozyme.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "3",
+//     name: "Fungi Killer",
+//     description: "Fungi Killer protects crops from fungal infections, ensuring healthy plant growth.",  price: 120,
+//     offerPrice: 100,
+//     image: ["/images/fungi_killer.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "4",
+//     name: "Kashtkaar Sulfur",
+//     description: "Kashtkaar Sulfur improves soil health, boosts yield, and controls fungal diseases.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/kashtkaar_sulfur.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "5",
+//     name: "Kings Plus",
+//     description: "Kashtkaar Sulfur improves soil health, boosts yield, and controls fungal diseases.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/kings_plus.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "6",
+//     name: "Krishi Amrit",
+//     description: "Kohinoor Powder delivers essential nutrients for healthier, greener, and more productive plants.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/krishi_amrit.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "7",
+//     name: "Milk Magic 40kg",
+//     description: "Milk Magic 40kg enhances plant growth and increases crop productivity effectively.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/milk_magic_40kg.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "8",
+//     name: "Milk Magic",
+//     description: "Milk Magic boosts soil fertility and promotes healthy, sustainable crop growth.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/milk_magic.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "9",
+//     name: "Root Plus",
+//     description: "Root Plus enhances root strength and boosts overall plant growth naturally.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/Root_Plus.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "10",
+//     name: "Shakti",
+//     description: "Shakti improves soil fertility and strengthens plant growth for higher yield.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/shakti.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "11",
+//     name: "Starplus",
+//     description: "Starplus enhances crop health and boosts yield with balanced nutrients.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/starplus.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "12",
+//     name: "Suprimo Liquid",
+//     description: "Suprimo Liquid promotes strong root growth and improves overall plant health.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/suprimo_liquid.png"],
+//     category: "Fertilizer",
+//   },
+//   {
+//     _id: "13",
+//     name: "Vijay Growing",
+//     description: "Milk Magic boosts soil fertility and promotes healthy, sustainable crop growth.",
+//     price: 120,
+//     offerPrice: 100,
+//     image: ["/images/vijay_growing.png"],
+//     category: "Fertilizer",
+//   },
+
+// ];
+
 export const productsDummyData = [
   {
     _id: "1",
     name: "Kohinoor",
-    description: "Kohinoor Powder delivers essential nutrients for healthier, greener, and more productive plants.",
+    description:
+      "Kohinoor Powder delivers essential nutrients for healthier, greener, and more productive plants.",
     price: 100,
     offerPrice: 90,
-    image: ["/images/kohinoor.png"],
+    image: [
+      "/images/kohinoor.png",
+      "/images/kohinoor.png",
+      "/images/kohinoor.png",
+      "/images/kohinoor.png",
+      "/images/kohinoor.png",
+      "/images/kohinoor.png",
+      "/images/kohinoor.png",
+      "/images/kohinoor.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "2",
     name: "Agrozyme",
-    description: "Agrozyme enhances plant growth, improves soil fertility, and boosts yield naturally.",
+    description:
+      "Agrozyme enhances plant growth, improves soil fertility, and boosts yield naturally.",
     price: 110,
     offerPrice: 95,
-    image: ["/images/agrozyme.png"],
+    image: [
+      "/images/agrozyme.png",
+      "/images/agrozyme.png",
+      "/images/agrozyme.png",
+      "/images/agrozyme.png",
+      "/images/agrozyme.png",
+      "/images/agrozyme.png",
+      "/images/agrozyme.png",
+      "/images/agrozyme.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "3",
     name: "Fungi Killer",
-    description: "Fungi Killer protects crops from fungal infections, ensuring healthy plant growth.",  price: 120,
+    description:
+      "Fungi Killer protects crops from fungal infections, ensuring healthy plant growth.",
+    price: 120,
     offerPrice: 100,
-    image: ["/images/fungi_killer.png"],
+    image: [
+      "/images/fungi_killer.png",
+      "/images/fungi_killer.png",
+      "/images/fungi_killer.png",
+      "/images/fungi_killer.png",
+      "/images/fungi_killer.png",
+      "/images/fungi_killer.png",
+      "/images/fungi_killer.png",
+      "/images/fungi_killer.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "4",
     name: "Kashtkaar Sulfur",
-    description: "Kashtkaar Sulfur improves soil health, boosts yield, and controls fungal diseases.",
+    description:
+      "Kashtkaar Sulfur improves soil health, boosts yield, and controls fungal diseases.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/kashtkaar_sulfur.png"],
+    image: [
+      "/images/kashtkaar_sulfur.png",
+      "/images/kashtkaar_sulfur.png",
+      "/images/kashtkaar_sulfur.png",
+      "/images/kashtkaar_sulfur.png",
+      "/images/kashtkaar_sulfur.png",
+      "/images/kashtkaar_sulfur.png",
+      "/images/kashtkaar_sulfur.png",
+      "/images/kashtkaar_sulfur.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "5",
     name: "Kings Plus",
-    description: "Kashtkaar Sulfur improves soil health, boosts yield, and controls fungal diseases.",
+    description:
+      "Kings Plus enhances soil fertility and promotes healthy crop growth.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/kings_plus.png"],
+    image: [
+      "/images/kings_plus.png",
+      "/images/kings_plus.png",
+      "/images/kings_plus.png",
+      "/images/kings_plus.png",
+      "/images/kings_plus.png",
+      "/images/kings_plus.png",
+      "/images/kings_plus.png",
+      "/images/kings_plus.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "6",
     name: "Krishi Amrit",
-    description: "Kohinoor Powder delivers essential nutrients for healthier, greener, and more productive plants.",
+    description:
+      "Krishi Amrit boosts plant nutrition and enhances overall yield naturally.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/krishi_amrit.png"],
+    image: [
+      "/images/krishi_amrit.png",
+      "/images/krishi_amrit.png",
+      "/images/krishi_amrit.png",
+      "/images/krishi_amrit.png",
+      "/images/krishi_amrit.png",
+      "/images/krishi_amrit.png",
+      "/images/krishi_amrit.png",
+      "/images/krishi_amrit.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "7",
     name: "Milk Magic 40kg",
-    description: "Milk Magic 40kg enhances plant growth and increases crop productivity effectively.",
+    description:
+      "Milk Magic 40kg enhances plant growth and increases crop productivity effectively.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/milk_magic_40kg.png"],
+    image: [
+      "/images/milk_magic_40kg.png",
+      "/images/milk_magic_40kg.png",
+      "/images/milk_magic_40kg.png",
+      "/images/milk_magic_40kg.png",
+      "/images/milk_magic_40kg.png",
+      "/images/milk_magic_40kg.png",
+      "/images/milk_magic_40kg.png",
+      "/images/milk_magic_40kg.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "8",
     name: "Milk Magic",
-    description: "Milk Magic boosts soil fertility and promotes healthy, sustainable crop growth.",
+    description:
+      "Milk Magic boosts soil fertility and promotes healthy, sustainable crop growth.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/milk_magic.png"],
+    image: [
+      "/images/milk_magic.png",
+      "/images/milk_magic.png",
+      "/images/milk_magic.png",
+      "/images/milk_magic.png",
+      "/images/milk_magic.png",
+      "/images/milk_magic.png",
+      "/images/milk_magic.png",
+      "/images/milk_magic.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "9",
     name: "Root Plus",
-    description: "Root Plus enhances root strength and boosts overall plant growth naturally.",
+    description:
+      "Root Plus enhances root strength and boosts overall plant growth naturally.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/Root_Plus.png"],
+    image: [
+      "/images/Root_Plus.png",
+      "/images/Root_Plus.png",
+      "/images/Root_Plus.png",
+      "/images/Root_Plus.png",
+      "/images/Root_Plus.png",
+      "/images/Root_Plus.png",
+      "/images/Root_Plus.png",
+      "/images/Root_Plus.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "10",
     name: "Shakti",
-    description: "Shakti improves soil fertility and strengthens plant growth for higher yield.",
+    description:
+      "Shakti improves soil fertility and strengthens plant growth for higher yield.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/shakti.png"],
+    image: [
+      "/images/shakti.png",
+      "/images/shakti.png",
+      "/images/shakti.png",
+      "/images/shakti.png",
+      "/images/shakti.png",
+      "/images/shakti.png",
+      "/images/shakti.png",
+      "/images/shakti.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "11",
     name: "Starplus",
-    description: "Starplus enhances crop health and boosts yield with balanced nutrients.",
+    description:
+      "Starplus enhances crop health and boosts yield with balanced nutrients.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/starplus.png"],
+    image: [
+      "/images/starplus.png",
+      "/images/starplus.png",
+      "/images/starplus.png",
+      "/images/starplus.png",
+      "/images/starplus.png",
+      "/images/starplus.png",
+      "/images/starplus.png",
+      "/images/starplus.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "12",
     name: "Suprimo Liquid",
-    description: "Suprimo Liquid promotes strong root growth and improves overall plant health.",
+    description:
+      "Suprimo Liquid promotes strong root growth and improves overall plant health.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/suprimo_liquid.png"],
+    image: [
+      "/images/suprimo_liquid.png",
+      "/images/suprimo_liquid.png",
+      "/images/suprimo_liquid.png",
+      "/images/suprimo_liquid.png",
+      "/images/suprimo_liquid.png",
+      "/images/suprimo_liquid.png",
+      "/images/suprimo_liquid.png",
+      "/images/suprimo_liquid.png",
+    ],
     category: "Fertilizer",
   },
   {
     _id: "13",
     name: "Vijay Growing",
-    description: "Milk Magic boosts soil fertility and promotes healthy, sustainable crop growth.",
+    description:
+      "Vijay Growing boosts soil fertility and promotes healthy, sustainable crop growth.",
     price: 120,
     offerPrice: 100,
-    image: ["/images/vijay_growing.png"],
+    image: [
+      "/images/vijay_growing.png",
+      "/images/vijay_growing.png",
+      "/images/vijay_growing.png",
+      "/images/vijay_growing.png",
+      "/images/vijay_growing.png",
+      "/images/vijay_growing.png",
+      "/images/vijay_growing.png",
+      "/images/vijay_growing.png",
+    ],
     category: "Fertilizer",
   },
-
 ];
-
 
 // export const userDummyData = {
 //   "_id": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
@@ -286,131 +492,7 @@ export const userDummyData = {
 };
 
 
-// export const orderDummyData = [
-//   {
-//     "_id": "67a20934b3db72db5cc77b2b",
-//     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//     "items": [
-//       {
-//         "product": {
-//           "_id": "67a1f4e43f34a77b6dde9144",
-//           "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//           "name": "Apple AirPods Pro",
-//           "description": "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) provide excellent sound, active noise cancellation, and a comfortable fit. The USB-C case ensures quick charging, and they pair seamlessly with Apple devices for an effortless audio experience.",
-//           "price": 499.99,
-//           "offerPrice": 399.99,
-//           "image": [
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667237/lrllaprpos2pnp5c9pyy.png",
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667238/jqotgy2rvm36vfjv6lxl.png",
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667238/niw7tqxvjsxt7wcehxeo.png",
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667237/h8cq4x9cfzqzwaiarvpk.png"
-//           ],
-//           "category": "Earphone",
-//           "date": 1738667236865,
-//           "__v": 0
-//         },
-//         "quantity": 1,
-//         "_id": "67a20934b3db72db5cc77b2c"
-//       }
-//     ],
-//     "amount": 406.99,
-//     "address": {
-//       "_id": "67a1e4233f34a77b6dde9055",
-//       "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//       "fullName": "GreatStack",
-//       "phoneNumber": "0123456789",
-//       "pincode": 654321,
-//       "area": "Main Road , 123 Street, G Block",
-//       "city": "City",
-//       "state": "State",
-//       "__v": 0
-//     },
-//     "status": "Order Placed",
-//     "date": 1738672426822,
-//     "__v": 0
-//   },
-//   {
-//     "_id": "67a20949b3db72db5cc77b2e",
-//     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//     "items": [
-//       {
-//         "product": {
-//           "_id": "67a1f52e3f34a77b6dde914a",
-//           "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//           "name": "Bose QuietComfort 45",
-//           "description": "The Bose QuietComfort 45 headphones are engineered for exceptional sound quality and unparalleled noise cancellation. With a 24-hour battery life and comfortable, lightweight design, these headphones deliver premium audio for any environment. Whether on a flight, in the office, or at home, the Bose QC45 blocks out distractions, offering an immersive listening experience.",
-//           "price": 429.99,
-//           "offerPrice": 329.99,
-//           "image": [
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667311/m16coelz8ivkk9f0nwrz.png"
-//           ],
-//           "category": "Headphone",
-//           "date": 1738667310300,
-//           "__v": 0
-//         },
-//         "quantity": 1,
-//         "_id": "67a20949b3db72db5cc77b2f"
-//       }
-//     ],
-//     "amount": 335.99,
-//     "address": {
-//       "_id": "67a1e4233f34a77b6dde9055",
-//       "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//       "fullName": "GreatStack",
-//       "phoneNumber": "0123456789",
-//       "pincode": 654321,
-//       "area": "Main Road , 123 Street, G Block",
-//       "city": "City",
-//       "state": "State",
-//       "__v": 0
-//     },
-//     "status": "Order Placed",
-//     "date": 1738672448031,
-//     "__v": 0
-//   },
-//   {
-//     "_id": "67a209bab3db72db5cc77b34",
-//     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//     "items": [
-//       {
-//         "product": {
-//           "_id": "67a1f4e43f34a77b6dde9144",
-//           "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//           "name": "Apple AirPods Pro",
-//           "description": "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) provide excellent sound, active noise cancellation, and a comfortable fit. The USB-C case ensures quick charging, and they pair seamlessly with Apple devices for an effortless audio experience.",
-//           "price": 499.99,
-//           "offerPrice": 399.99,
-//           "image": [
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667237/lrllaprpos2pnp5c9pyy.png",
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667238/jqotgy2rvm36vfjv6lxl.png",
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667238/niw7tqxvjsxt7wcehxeo.png",
-//             "https://res.cloudinary.com/djbvf02yt/image/upload/v1738667237/h8cq4x9cfzqzwaiarvpk.png"
-//           ],
-//           "category": "Earphone",
-//           "date": 1738667236865,
-//           "__v": 0
-//         },
-//         "quantity": 1,
-//         "_id": "67a209bab3db72db5cc77b35"
-//       }
-//     ],
-//     "amount": 406.99,
-//     "address": {
-//       "_id": "67a1e4233f34a77b6dde9055",
-//       "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-//       "fullName": "GreatStack",
-//       "phoneNumber": "0123456789",
-//       "pincode": 654321,
-//       "area": "Main Road , 123 Street, G Block",
-//       "city": "City",
-//       "state": "State",
-//       "__v": 0
-//     },
-//     "status": "Order Placed",
-//     "date": 1738672560698,
-//     "__v": 0
-//   }
-// ]
+
 
 export const orderDummyData = [
   {

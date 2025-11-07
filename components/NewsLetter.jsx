@@ -2,15 +2,16 @@
 
 import React, { useState } from "react";
 import { FaWhatsapp, FaTimes } from "react-icons/fa";
-
+import { useLanguage } from "@/context/LanguageContext";
 const NewsLetter = () => {
+   const { translations } = useLanguage();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState({ visible: false, message: "", type: "success" });
 
   const phoneNumber = "919752538725";
-  const defaultMsg = "🙏🏻 Namaste! I am Khashtkaar Agro Bio Care Assistant. How can I help you today?";
-
+  
+const defaultMsg = "🙏🏻 Namaste! I am Khashtkaar Agro Bio Care Assistant. How can I help you today?";
   const showToast = (message, type = "success") => {
     setToast({ visible: true, message, type });
     setTimeout(() => setToast({ visible: false, message: "", type }), 3000);
@@ -49,14 +50,17 @@ const NewsLetter = () => {
     <div className="flex flex-col items-center justify-center text-center space-y-4 pt-10 pb-16 px-4 sm:px-6 md:px-10 bg-green-50 rounded-2xl shadow-md max-w-[1200px] mx-auto">
       {/* Heading */}
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800">
-        Subscribe now & get 20% off
+        {/* Subscribe now & get 20% off */}
+        {translations.heading}
       </h1>
 
       {/* Description */}
       <p className="text-sm sm:text-base text-gray-700/90 leading-relaxed max-w-2xl">
-        Stay updated with the latest farming tips, sustainable practices, and exclusive discounts on our high-quality fertilizers. <br />
+        {/* Stay updated with the latest farming tips, sustainable practices, and exclusive discounts on our high-quality fertilizers. <br /> */}
+        {translations.description1} <br />
         <span className="font-semibold text-green-700">
-          Subscribe now and boost your crop yield!
+          {/* Subscribe now and boost your crop yield! */}
+          {translations.description2}
         </span>
       </p>
 
