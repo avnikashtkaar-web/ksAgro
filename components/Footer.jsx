@@ -133,42 +133,56 @@ const Footer = () => {
         {translations.rights}
       </div>
 
-      {/* ✅ Floating Buttons: Left side, well-separated */}
-      {pathname !== "/whatsapp" && (
-        <div className="fixed bottom-28 left-6 z-50 flex flex-col items-center gap-6 sm:gap-7">
-          {/* 📞 Call Button (top) */}
-          <div className="flex flex-col items-center group">
-            <span className="mb-1 px-3 py-1 rounded bg-black text-white text-[10px] sm:text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-              Missed Call / Call Us
-            </span>
-            <a
-              href="tel:+919752538725"
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-500 text-white flex items-center justify-center shadow-2xl hover:bg-yellow-600 transition-colors animate-pulse"
-              title="Call us"
-            >
-              <FaMobileAlt size={22} className="sm:size-[28px]" />
-            </a>
-          </div>
+     {pathname !== "/whatsapp" && (
+  <div
+    className="
+      fixed
+      bottom-4
+      left-0
+      z-50
+      flex
+      flex-col
+      items-center
+      gap-3
+      sm:gap-1
+    "
+  >
+    {/* 📞 Call Button */}
+    <div className="flex flex-col items-center group">
+      <span className="mb-1 px-2 py-1 rounded bg-black text-white text-[9px] sm:text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+        Missed Call / Call Us
+      </span>
+      <a
+        href="tel:+919752538725"
+        className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-yellow-500 text-white flex items-center justify-center shadow-2xl hover:bg-yellow-600 transition-colors animate-pulse"
+        title="Call us"
+      >
+        <FaMobileAlt size={18} className="sm:size-[26px]" />
+      </a>
+    </div>
 
-          {/* 💬 WhatsApp Button (below) */}
-          <div className="flex flex-col items-center group">
-            <span className="mb-1 px-3 py-1 rounded bg-black text-white text-[10px] sm:text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-              Chat on WhatsApp
-            </span>
-            <a
-              href={`https://wa.me/919752538725?text=${encodeURIComponent(
-                "🙏🏻 Namaste! I am Kashtkaar Agro Bio Care Assistant. How can I help you today?"
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-2xl hover:bg-green-600 transition-colors animate-pulse"
-              title="Chat on WhatsApp"
-            >
-              <FaWhatsapp size={24} className="sm:size-[30px]" />
-            </a>
-          </div>
-        </div>
-      )}
+    {/* 💬 WhatsApp Button */}
+    <div className="flex flex-col items-center group">
+      <span className="mb-1 px-2 py-1 rounded bg-black text-white text-[9px] sm:text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+        Chat on WhatsApp
+      </span>
+      <a
+        href={`https://wa.me/919752538725?text=${encodeURIComponent(
+          "🙏🏻 Namaste! I am Kashtkaar Agro Bio Care Assistant. How can I help you today?"
+        )}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-green-500 text-white flex items-center justify-center shadow-2xl hover:bg-green-600 transition-colors animate-pulse"
+        title="Chat on WhatsApp"
+      >
+        <FaWhatsapp size={20} className="sm:size-[28px]" />
+      </a>
+    </div>
+  </div>
+)}
+
+
+    
     </footer>
   );
 };

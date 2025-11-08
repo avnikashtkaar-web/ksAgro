@@ -555,28 +555,29 @@ const Navbar = () => {
                 className={navLinkClass}
                 onClick={() => setMenuOpen(false)}
               >
-                <HomeIcon className="w-4 h-4" />{t("home")}
+                <HomeIcon className="w-4 h-4" />{translations.home}
               </Link>
               <Link
-                href="/shop"
-                className={navLinkClass}
-                onClick={() => setMenuOpen(false)}
-              >
-                <ShoppingBag className="w-4 h-4" /> {t("shop")}
-              </Link>
-              <Link
-                href="/about"
-                className={navLinkClass}
-                onClick={() => setMenuOpen(false)}
-              >
-                <Info className="w-4 h-4" /> {t("about")}
-              </Link>
+  href="/shop"
+  className={navLinkClass}
+  onClick={() => setMenuOpen(false)}
+>
+  <ShoppingBag className="w-4 h-4" /> {translations.shop}
+</Link>
+
+<Link
+  href="/about"
+  className={navLinkClass}
+  onClick={() => setMenuOpen(false)}
+>
+  <Info className="w-4 h-4" /> {translations.about}
+</Link>
               <Link
                 href="/contact"
                 className={navLinkClass}
                 onClick={() => setMenuOpen(false)}
               >
-                <Phone className="w-4 h-4" /> {t("contact")}
+                <Phone className="w-4 h-4" /> {translations.contact}
               </Link>
 
               {/* Language Button Mobile */}
@@ -620,7 +621,7 @@ const Navbar = () => {
                   }}
                   className="bg-green-600 w-fit px-4 py-2 rounded-full shadow hover:bg-green-700 transition text-sm"
                 >
-                  Admin
+                 {translations.admin}
                 </motion.button>
               )}
 
@@ -647,7 +648,7 @@ const Navbar = () => {
                   }}
                   className="bg-green-600 px-4 py-2 rounded-full shadow hover:bg-green-700 transition text-sm"
                 >
-                  Account
+                  {translations.account}
                 </motion.button>
               </div>
             </motion.div>
@@ -656,7 +657,8 @@ const Navbar = () => {
       </nav>
 
       <audio ref={audioRef} src={audioFiles[language]} />
-      <div className="h-20"></div>
+      {/* <div className="h-20"></div> */}
+      <div className="h-10 sm:h-20"></div>
 
       <style jsx global>{`
         @keyframes gradientMove {
